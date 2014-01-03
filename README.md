@@ -4,7 +4,8 @@
 - .bashrc
 - .gitconfig
 - .gitignore, README
-- .vimrc for [vim](http://www.vim.org/)
+- .vimrc and .gvimrc for [vim](http://www.vim.org/)
+- NeoBundle as vim plugin manager [NeoBundle](https://github.com/Shougo/neobundle.vim)
 - symlink.sh as install script
 
 ## how to use

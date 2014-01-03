@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd $(dirname $0)
-DOTFILES=$(ls -A | grep -e "^\." | grep -ve "^\.git$")
+DOTFILES=$(ls -A | grep -e "^\." | grep -ve "^\.git$" | grep -ve "^\.gitmodules$" | grep -ve "^\.gitignore")
 DATE=$(date +%y%m%d)
 
 if [ -r ~/.bash_profile -a ! -L ~/.bash_profile ]; then
