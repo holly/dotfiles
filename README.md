@@ -12,4 +12,12 @@
 
     $ cd
     $ git clone git://github.com/holly/dotfiles.git ~/.dotfiles
-    $ sh .dotfiles/symlink.sh
+    $ # for NeoBundle
+    $ cd .dotfiles
+    $ git clone https://github.com/Shougo/neobundle.vim .vim/bundle/neobundle.vim
+    $ pushd .vim/bundle/neobundle.vim
+    $ git submodule init
+    $ git submodule update
+    $ popd
+    $ # make dot symlink to home directory
+    $ sh symlink.sh
