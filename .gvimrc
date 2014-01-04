@@ -151,6 +151,11 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tmhedberg/matchit'
+NeoBundle 'othree/eregex.vim'
+NeoBundle 'vim-scripts/Align'
+NeoBundle 'vim-scripts/EnhCommentify.vim'
+NeoBundle 'vim-scripts/taglist.vim'
 " ======================================= "
 
  " Installation check.
