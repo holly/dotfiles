@@ -13,3 +13,5 @@
 	lg = log --graph --pretty=oneline --decorate --date=short --abbrev-commit --branches # tree log ( via http://webtech-walker.com/archive/2010/03/04034601.html)
 [color]
 	ui = auto
+[http]
+	sslVerify = false

@@ -114,6 +114,10 @@ if ! shopt -oq posix; then
 fi
 
 # setting
-. $HOME/.dotfiles/exports
-. $HOME/.dotfiles/aliases
-. $HOME/.dotfiles/functions
+export DOTFILES=$HOME/.dotfiles
+. $DOTFILES/exports
+. $DOTFILES/aliases
+. $DOTFILES/functions
+for f in $(find $DOTFILES/extra -type f | grep -v .gitignore); do
+ . $f
+done
