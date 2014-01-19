@@ -21,15 +21,19 @@ humanize() {
 	local num=$1
 	if [ $num -lt 1024 ]; then
 		# $num < 1024
-		echo "$num Byte"
+		echo "${num}Byte"
 	elif [ $num -ge 1024 -a $num -lt $((1024 * 1024)) ]; then
 		# $num >= 1024 and $num < 1048576
-		echo "$(($num / 1024)) KByte"
+		echo "$(($num / 1024))KByte"
 	elif [ $num -ge $((1024 * 1024)) -a $num -lt $((1024 * 1024 * 1024)) ]; then
 		# $num >= 1048576 and $num < 1073741824
-		echo "$(($num / 1024 / 1024)) MByte"
+		echo "$(($num / 1024 / 1024))MByte"
 	elif [ $num -ge $((1024 * 1024 * 1024)) -a $num -lt $((1024 * 1024 * 1024 * 1024)) ]; then
 		# $num >= 1073741824 and $num < 1099511627776
-		echo "$(($num / 1024 / 1024 / 1024)) TByte"
+		echo "$(($num / 1024 / 1024 / 1024))TByte"
+	else
+#	elif [ $num -ge $((1024 * 1024 * 1024 * 1024)) -a $num -lt $((1024 * 1024 * 1024 * 1024 * 1024)) ]; then
+#		# $num >= 1099511627776 and $num < 1125899906842624
+		echo "$(($num / 1024 / 1024 / 1024 / 1024))PByte"
 	fi
 }

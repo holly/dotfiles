@@ -52,6 +52,11 @@ set title
 " vimgrepで自動的にQuickWindowsを開く
 au QuickfixCmdPost vimgrep cw
 
+" 新規ファイル作成時に拡張子に応じて、雛形ファイルから開くようにする
+autocmd BufNewFile *.sh 0r ~/.vim/template/sh.txt
+autocmd BufNewFile *.pl 0r ~/.vim/template/perl-script.txt
+autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
+
 " for NEEDTree
 " 隠しファイルを表示
 let NERDTreeShowHidden = 1
