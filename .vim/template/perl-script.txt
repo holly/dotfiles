@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use feature qw(say);
-use Findbin qw($Script $Bin);
+use FindBin qw($Script $Bin);
 use Getopt::Long;
 use Pod::Usage;
 
