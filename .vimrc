@@ -1,4 +1,4 @@
-colorscheme desert
+colorscheme murphy
 
 " タブの画面上での幅(rubyは2がよい)
 set tabstop=4
