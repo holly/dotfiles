@@ -16,7 +16,7 @@ date2time() {
 	date '+%s' -d "$date"
 }
 
-humanize() {
+human_readable_size() {
 
 	local num=$1
 	if [ $num -lt 1024 ]; then
