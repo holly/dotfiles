@@ -5,6 +5,7 @@
 	co = checkout
 	st = status -sb # simple status
 	pr = pull --rebase # no merge commit when pulling
+	pu = push -u
 	fo = fetch origin
 	ro = rebase origin # you can rebase to master by fo -> ro in branch
 	rc = rebase --continue
@@ -15,3 +16,5 @@
 	ui = auto
 [http]
 	sslVerify = false
+[push]
+	default = simple
