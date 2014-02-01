@@ -57,9 +57,26 @@ autocmd BufNewFile *.sh 0r ~/.vim/template/sh.txt
 autocmd BufNewFile *.pl 0r ~/.vim/template/perl-script.txt
 autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
 
+" setting markdown filetype
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+
 " for NEEDTree
 " 隠しファイルを表示
 let NERDTreeShowHidden = 1
+
+" for vim-quickrun
+let g:quickrun_config = {}
+"let g:quickrun_config['markdown'] = {
+"      \   'outputter': 'browser'
+"      }
+" http://blog.glidenote.com/blog/2013/01/10/vim-quickrun-marked/
+let g:quickrun_config['markdown'] = {
+      \ 'outputter' : 'browser',
+      \ 'command'   : 'pandoc',
+      \ 'cmdopt'    : '-s -f markdown -t html',
+      \ 'args'      : '',
+	  \ 'exec'      : '%c %o %a %s | sed -e "/<\/style>/a\\<link href=\"http://kevinburke.bitbucket.org/markdowncss/markdown.css\" rel=\"stylesheet\"></link>"',
+      \ }
 
 " for neocmplcache
 " Disable AutoComplPop.
@@ -157,6 +174,8 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/EnhCommentify.vim'
 NeoBundle 'vim-scripts/taglist.vim'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tyru/open-browser.vim'
 " ======================= "
 
 NeoBundleCheck

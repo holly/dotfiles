@@ -1,3 +1,11 @@
+isstdin() {
+	local ret=0
+	if [ -t 0 ]; then
+		ret=1
+	fi
+	return $ret
+}
+
 abs2rel() {
 	local file=$1
 	echo $(cd $(dirname $file) && pwd)/$(basename $file)
@@ -14,6 +22,21 @@ date2time() {
 		date=$(date '+%Y-%m-%d %H:%M:%S')
 	fi
 	date '+%s' -d "$date"
+}
+
+md2html() {
+	local css="http://kevinburke.bitbucket.org/markdowncss/markdown.css" rel="stylesheet"
+	if [ ! -z "$MD2HTML_CSS" ]; then
+		css=$MD2HTML_CSS
+	fi
+	local linktag="<link href=\"$css\" rel=\"stylesheet\"></link>"
+
+	if isstdin; then
+		md="-"
+	else
+		md="$1"
+	fi
+	cat $md | \pandoc -s -t html -f markdown | sed -e "/<\/style>/a\\$linktag"
 }
 
 human_readable_size() {
