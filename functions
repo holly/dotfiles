@@ -38,25 +38,3 @@ md2html() {
 	fi
 	cat $md | \pandoc -s -t html -f markdown | sed -e "/<\/style>/a\\$linktag"
 }
-
-human_readable_size() {
-
-	local num=$1
-	if [ $num -lt 1024 ]; then
-		# $num < 1024
-		echo ${num}Byte
-	elif [ $num -ge 1024 -a $num -lt $((1024 * 1024)) ]; then
-		# $num >= 1024 and $num < 1048576
-		echo $(echo $num / 1024 | bc)KByte
-	elif [ $num -ge $((1024 * 1024)) -a $num -lt $((1024 * 1024 * 1024)) ]; then
-		# $num >= 1048576 and $num < 1073741824
-		echo $(echo "scale=1; $num / 1024 / 1024" | bc)MByte
-	elif [ $num -ge $((1024 * 1024 * 1024)) -a $num -lt $((1024 * 1024 * 1024 * 1024)) ]; then
-		# $num >= 1073741824 and $num < 1099511627776
-		echo $(echo "scale=1; $num / 1024 / 1024 / 1024" | bc)GByte
-	else
-#	elif [ $num -ge $((1024 * 1024 * 1024 * 1024)) -a $num -lt $((1024 * 1024 * 1024 * 1024 * 1024)) ]; then
-#		# $num >= 1099511627776 and $num < 1125899906842624
-		echo $(echo "scale=1; $num / 1024 / 1024 / 1024 / 1024" | bc)TByte
-	fi
-}
