@@ -1,0 +1,29 @@
+if [ "$PS1" ]; then
+  shopt -s checkwinsize cdspell extglob histappend
+  alias ll='ls -lF'
+  alias ls='ls --color=auto'
+  HISTCONTROL=ignoreboth
+  HISTIGNORE="[bf]g:exit:quit"
+  PS1="[\u@\h \w]\\$ "
+  if [ -n "$SSH_CLIENT" ]; then
+    PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%\.*} \007" && history -a'
+  fi
+fi
+
+case "$TERM" in
+  screen)
+    export TERM=xterm-color
+    ;;
+  screen-256color)
+    export TERM=xterm-color
+    ;;
+esac
+
+# setting
+export DOTFILES=$HOME/.dotfiles
+. $DOTFILES/exports
+. $DOTFILES/aliases
+. $DOTFILES/functions
+for f in $(find $DOTFILES/extra -type f | grep -v .gitignore); do
+ . $f
+done
