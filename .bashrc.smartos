@@ -19,6 +19,8 @@ case "$TERM" in
     ;;
 esac
 
+. $HOME/.profile
+
 # setting
 export DOTFILES=$HOME/.dotfiles
 . $DOTFILES/exports
