@@ -60,6 +60,11 @@ autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
 " setting markdown filetype
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 
+" setting python filetype
+autocmd FileType python setl autoindent
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd FileType python setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+
 " for NEEDTree
 " 隠しファイルを表示
 let NERDTreeShowHidden = 1
