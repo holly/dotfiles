@@ -24,17 +24,12 @@ date2time() {
 	date '+%s' -d "$date"
 }
 
-md2html() {
-	local css="http://kevinburke.bitbucket.org/markdowncss/markdown.css" rel="stylesheet"
-	if [ ! -z "$MD2HTML_CSS" ]; then
-		css=$MD2HTML_CSS
-	fi
-	local linktag="<link href=\"$css\" rel=\"stylesheet\"></link>"
-
+mdless() {
+	local md=""
 	if isstdin; then
 		md="-"
 	else
 		md="$1"
 	fi
-	cat $md | \pandoc -s -t html -f markdown | sed -e "/<\/style>/a\\$linktag"
+	cat $md | pandoc -s -f markdown -t man | groff -D utf8 -T utf8 -mandoc | less
 }
