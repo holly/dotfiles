@@ -48,5 +48,5 @@ mdbrowser() {
 	
 	cat $md | pandoc -s -f markdown -t html5 --template=default.html -o $tmpfile
 	$BROWSER_CMD $BROWSER_OPTIONS $tmpfile
-	rm -f tmpfile
+	rm -f $tmpfile
 }
