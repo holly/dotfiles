@@ -33,3 +33,20 @@ mdless() {
 	fi
 	cat $md | pandoc -s -f markdown -t man | groff -D utf8 -T utf8 -mandoc | less
 }
+
+mdbrowser() {
+	local md=""
+	local tmpfile=$(mktemp)
+	if [ -z "$BROWSER_CMD" ]; then
+		BROWSER_CMD=/usr/bin/x-www-browser
+	fi
+	if isstdin; then
+		md="-"
+	else
+		md="$1"
+	fi
+	
+	cat $md | pandoc -s -f markdown -t html5 --template=default.html -o $tmpfile
+	$BROWSER_CMD $BROWSER_OPTIONS $tmpfile
+	rm -f tmpfile
+}
