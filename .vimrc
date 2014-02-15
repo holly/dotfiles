@@ -1,4 +1,4 @@
-colorscheme murphy
+colorscheme elflord
 
 " タブの画面上での幅(rubyは2がよい)
 set tabstop=4
@@ -169,6 +169,7 @@ filetype plugin indent on     " Required!
 " colorschemes
 NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'altercation/solarized'
+NeoBundle 'vol2223/vim-colorblind-colorscheme'
 " plugins
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/neocomplcache'

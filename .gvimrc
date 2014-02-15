@@ -173,6 +173,7 @@ filetype plugin indent on     " Required!
 " colorschemes
 NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'altercation/solarized'
+NeoBundle 'vol2223/vim-colorblind-colorscheme'
 " plugins
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/neocomplcache'
