@@ -1,5 +1,3 @@
-colorscheme elflord
-
 " タブの画面上での幅(rubyは2がよい)
 set tabstop=4
 set shiftwidth=4
@@ -64,6 +62,7 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd FileType python setl autoindent
 autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd FileType python setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+
 
 " for NEEDTree
 " 隠しファイルを表示
@@ -186,3 +185,5 @@ NeoBundle 'tyru/open-browser.vim'
 
 NeoBundleCheck
 
+" colorscheme 
+colorscheme color_blind

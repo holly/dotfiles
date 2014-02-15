@@ -1,4 +1,3 @@
-colorscheme wombat
 set guifont=Takao明朝\ 12
 " ウインドウの幅
 set columns=90
@@ -190,3 +189,6 @@ NeoBundle 'tyru/open-browser.vim'
 
 " Installation check.
 NeoBundleCheck
+
+" colorscheme 
+colorscheme color_blind
