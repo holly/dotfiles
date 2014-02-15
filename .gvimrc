@@ -83,11 +83,11 @@ let g:quickrun_config = {}
 "      }
 " http://blog.glidenote.com/blog/2013/01/10/vim-quickrun-marked/
 let g:quickrun_config['markdown'] = {
-      \ 'outputter' : 'browser',
-      \ 'command'   : 'pandoc',
-      \ 'cmdopt'    : '-s -f markdown -t html',
+      \ 'outputter' : 'null',
+      \ 'command'   : 'mdbrowser.sh',
+      \ 'cmdopt'    : '',
       \ 'args'      : '',
-      \ 'exec'      : '%c %o %a %s | sed -e "/<\/style>/a\\<link href=\"http://kevinburke.bitbucket.org/markdowncss/markdown.css\" rel=\"stylesheet\"></link>"',
+      \ 'exec'      : '%c %o %a %s',
       \ }
 
 " for neocmplcache
