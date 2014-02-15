@@ -14,6 +14,7 @@ fi
 ln -sf ".bashrc.$OS" .bashrc
 
 DOTFILES=$(ls -A | grep -e "^\." | grep -ve "^\.git$" | grep -ve "^\.gitmodules$" | grep -ve "^\.gitignore" | grep -ve '^\.bashrc\.')
+DOTSSH=$PWD/.ssh
 DATE=$(date +%y%m%d)
 
 
@@ -24,6 +25,13 @@ fi
 if [ ! -r ~/.bash_aliases ]; then
 	touch ~/.bash_aliases
 fi
+
+if [ -d ~/.ssh -a ! -L ~/.ssh ]; then
+	mv ~/.ssh ~/.ssh.$DATE
+fi
+find $DOTSSH/authorized_keys.d/ -type f ! -name .gitignore | xargs --no-run-if-empty cat >$DOTSSH/authorized_keys
+chmod 600 $DOTSSH/authorized_keys
+find $DOTSSH/config.d/ -type f ! -name .gitignore ! -name base | xargs cat $DOTSSH/config.d/base >$DOTSSH/config
 
 if [ ! -d ~/.vim_tmp ]; then
 	mkdir ~/.vim_tmp
