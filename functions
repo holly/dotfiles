@@ -1,3 +1,8 @@
+abs2rel() {
+	local file=$1
+	echo $(cd $(dirname $file) && pwd)/$(basename $file)
+}
+
 isstdin() {
 	local ret=0
 	if [ -t 0 ]; then
@@ -6,10 +11,6 @@ isstdin() {
 	return $ret
 }
 
-abs2rel() {
-	local file=$1
-	echo $(cd $(dirname $file) && pwd)/$(basename $file)
-}
 
 time2date() {
 	local time=$1
@@ -49,4 +50,16 @@ mdbrowser() {
 	cat $md | pandoc -s -f markdown -t html5 --template=default.html -o $tmpfile
 	$BROWSER_CMD $BROWSER_OPTIONS $tmpfile
 	rm -f $tmpfile
+}
+
+log() {
+	local prio=$1
+	local message=$2
+	if [ -z "$LOG_FACILITY" ]; then
+		LOG_FACILITY=local1
+	fi
+	if [ -z "$LOG_TAG" ]; then
+		LOG_TAG=$USER
+	fi
+	logger -s -p $LOG_FACILITY.$prio -t $LOG_TAG $message
 }
