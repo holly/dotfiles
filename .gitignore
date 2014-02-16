@@ -6,7 +6,6 @@ extra/*
 *.swp
 *~
 .ssh/*
-.ssh/config.d/*
 !.ssh/config.d/.gitignore
 !.ssh/config.d/base
 .ssh/authorized_keys.d/*
