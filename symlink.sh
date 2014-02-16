@@ -16,7 +16,7 @@ ln -sf ".bashrc.$OS" .bashrc
 DOTFILES=$(ls -A | grep -e "^\." | grep -ve "^\.git$" | grep -ve "^\.gitmodules$" | grep -ve "^\.gitignore" | grep -ve '^\.bashrc\.')
 DOTSSH=$PWD/.ssh
 DATE=$(date +%y%m%d)
-
+SYMLINK_OPTS='-Fs'
 
 if [ -r ~/.bash_profile -a ! -L ~/.bash_profile ]; then
 	mv ~/.bash_profile ~/.bash_profile.$DATE
@@ -38,6 +38,12 @@ if [ ! -d ~/.vim_tmp ]; then
 	mkdir ~/.vim_tmp
 fi
 
+symlink_opts=$SYMLINK_OPTS
+if [ ! -z "$FORCE_SYMLINK" ]; then
+	symlink_opts="${symlink_opts}f"
+else
+	symlink_opts="${symlink_opts}i"
+fi
 for DOTFILE in $DOTFILES; do
-	ln -Fis "$PWD/$DOTFILE" $HOME
+	ln $symlink_opts "$PWD/$DOTFILE" $HOME
 done
