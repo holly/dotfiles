@@ -13,7 +13,7 @@ else
 fi
 ln -sf ".bashrc.$OS" .bashrc
 
-DOTFILES=$(ls -A | grep -e "^\." | grep -ve "^\.git$" | grep -ve "^\.gitmodules$" | grep -ve "^\.gitignore" | grep -ve '^\.bashrc\.')
+DOTFILES=$(ls -A | grep -e "^\." | grep -ve "^\.git$" -ve "^\.gitmodules$" -ve "^\.gitignore" -ve '^\.bashrc\.' -ve '^\.ssh')
 DOTSSH=$PWD/.ssh
 DATE=$(date +%y%m%d)
 SYMLINK_OPTS='-Fs'
