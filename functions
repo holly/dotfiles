@@ -5,10 +5,12 @@ abs2rel() {
 
 cpbk() {
 	local src=$1
-	local dest=$src.$(date2time)
+	local prefix=$(time2date $(date2time) | sed -e 's/-//g' -e 's/://g' -e 's/ /./g')
+	local dest=$src.$prefix
 	while [ -e $dest ]; do
 		sleep 1
-		dest=$src.$(date2time)
+		prefix=$(time2date $(date2time) | sed -e 's/-//g' -e 's/://g' -e 's/ /./g')
+		dest=$src.$prefix
 	done
 	cp -a $src $dest
 }
