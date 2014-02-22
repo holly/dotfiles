@@ -19,6 +19,6 @@ find $DOTSSH/authorized_keys.d/ -type f ! -name .gitignore | xargs --no-run-if-e
 find $DOTSSH/config.d/ -type f ! -name .gitignore ! -name base | xargs cat $DOTSSH/config.d/base >$REAL_DOTSSH/config
 
 # copy other files
-find $DOTSSH/extra/ -type f ! -name .gitignore | xargs -n1 -I% --run-if-empty cp -p % $REAL_DOTSSH/
+find $DOTSSH/extra/ -type f ! -name .gitignore | xargs -n1 -I% --no-run-if-empty cp -p % $REAL_DOTSSH/
 chmod 700 $REAL_DOTSSH
 chmod 600 $REAL_DOTSSH/authorized_keys $REAL_DOTSSH/config
