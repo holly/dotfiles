@@ -3,6 +3,16 @@ abs2rel() {
 	echo $(cd $(dirname $file) && pwd)/$(basename $file)
 }
 
+cpbk() {
+	local src=$1
+	local dest=$src.$(date2time)
+	while [ -e $dest ]; do
+		sleep 1
+		dest=$src.$(date2time)
+	done
+	cp -a $src $dest
+}
+
 isstdin() {
 	local ret=0
 	if [ -t 0 ]; then
