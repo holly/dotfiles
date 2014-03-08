@@ -191,4 +191,4 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundleCheck
 
 " colorscheme 
-colorscheme color_blind
+colorscheme wombat
