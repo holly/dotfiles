@@ -11,4 +11,4 @@ alias vi='vim'
 alias gvi='gvim'
 alias tar='tar --exclude-backups --exclude="*.swp" --exclude="*.tmp" --exclude="*.org" --exclude="*.pid" --exclude="lock" --exclude="*~" --ignore-failed-read --one-file-system'
 alias reboot="sudo /sbin/reboot"
-alias shutdown="sudo /sbin/shutdown"
+alias off="sudo /sbin/shutdown -h now"
