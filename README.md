@@ -5,9 +5,11 @@
 - .gitconfig
 - .gitignore, README
 - .ssh
+- .zsh
 - .vim, .vimrc and .gvimrc for [vim](http://www.vim.org/)
 - NeoBundle as vim plugin manager [NeoBundle](https://github.com/Shougo/neobundle.vim)
 - symlink.sh as install script
+- zsh.sh as zsh login shell user script
 
 ## how to use
 
