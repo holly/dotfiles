@@ -45,6 +45,7 @@ set laststatus=2
 " コマンドをステータス行に表示
 set showcmd
 " タイトルを表示
+let &titleold=expand("%:p:h")
 set title
 
 " vimgrepで自動的にQuickWindowsを開く
