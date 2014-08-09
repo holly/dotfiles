@@ -6,4 +6,4 @@ export GREP_OPTIONS='--color=auto -I'
 export PAGER=less
 export LESSCHARSET=utf-8
 export LESS=-irMX
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin:/opt/local/bin
