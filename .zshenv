@@ -6,4 +6,5 @@ export GREP_OPTIONS='--color=auto -I'
 export PAGER=less
 export LESSCHARSET=utf-8
 export LESS=-irMX
-export PATH=$PATH:$HOME/bin:/opt/local/bin:/usr/sbin
+export HOLLY_TOOLS_DIR=$HOME/holly-tools
+export PATH=$PATH:$HOME/bin:$HOME_TOOLS_DIR/bin:/opt/local/bin:/usr/sbin
