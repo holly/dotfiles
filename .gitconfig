@@ -16,5 +16,5 @@
 	ui = auto
 [http]
 	sslVerify = false
-[push]
-	default = simple
+#[push]
+#	default = simple
