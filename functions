@@ -75,3 +75,8 @@ log() {
 	fi
 	logger -s -p $LOG_FACILITY.$prio -t $LOG_TAG $message
 }
+
+docker-login() {
+	pid=$(docker inspect --format '{{.State.Pid}}' $1)
+	nsenter --target $pid --mount --uts --ipc --net --pid
+}
