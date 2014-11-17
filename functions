@@ -80,3 +80,10 @@ docker-login() {
 	pid=$(docker inspect --format '{{.State.Pid}}' $1)
 	nsenter --target $pid --mount --uts --ipc --net --pid
 }
+
+docker-clean() {
+	for contaner_id in $(docker ps -a -q); do
+		docker kill $contaner_id
+		docker rm $contaner_id
+	done
+}
