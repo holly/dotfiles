@@ -7,6 +7,7 @@ alias od='od -tcx1'
 alias pandoc='pandoc -s'
 alias tmux='tmux -u'
 alias ta='tmux attach'
+alias grep='grep --color=auto -I'
 alias tar='tar --exclude-backups --exclude="*.swp" --exclude="*.tmp" --exclude="*.org" --exclude="*.pid" --exclude="lock" --exclude="*~" --ignore-failed-read --one-file-system'
 alias reboot="sudo /sbin/reboot"
 alias off="sudo /sbin/shutdown -h now"
