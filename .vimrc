@@ -1,4 +1,5 @@
 " タブの画面上での幅(rubyは2がよい)
+"
 set tabstop=4
 set shiftwidth=4
 " タブをスペースに展開する (noexpandtab:展開しない)
@@ -190,4 +191,4 @@ call neobundle#end()
 NeoBundleCheck
 
 " colorscheme 
-colorscheme wombat
+colorscheme delek
