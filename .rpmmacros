@@ -3,6 +3,7 @@
 %_gpg_name Akira Horimoto (holly) <emperor.kurt __at__ gmail.com>
 %_gpgbin /usr/bin/gpg
 %_topdir %(echo $HOME)/rpmbuild
+%debug_package %{nil}
 
 %_smp_mflags %( \
     [ -z "$RPM_BUILD_NCPUS" ] \\\
