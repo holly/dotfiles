@@ -18,3 +18,5 @@
 	sslVerify = false
 [push]
 	default = simple
+[credential]
+	helper = cache
