@@ -191,4 +191,4 @@ call neobundle#end()
 NeoBundleCheck
 
 " colorscheme 
-colorscheme wombat
+colorscheme color_blind
