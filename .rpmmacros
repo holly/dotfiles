@@ -3,6 +3,8 @@
 %_gpg_name Akira Horimoto (holly) <emperor.kurt __at__ gmail.com>
 %_gpgbin /usr/bin/gpg
 %_topdir %(echo $HOME)/rpmbuild
+
+%_build_name_fmt    %%{ARCH}/%%{NAME}-%%{VERSION}-%%{RELEASE}.holly.%%{ARCH}.rpm
 %debug_package %{nil}
 
 %_smp_mflags %( \
