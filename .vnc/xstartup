@@ -1,0 +1,5 @@
+#!/bin/sh
+export XKL_XMODMAP_DISABLE=1
+killall vncconfig
+vncconfig -nowin &
+exec startxfce4

@@ -10,3 +10,5 @@ extra/*
 !.ssh/config.d/base
 .ssh/authorized_keys.d/*
 !.ssh/authorized_keys.d/.gitignore
+.vnc/*
+!.vnc/xstartup
