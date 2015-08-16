@@ -12,3 +12,4 @@ extra/*
 !.ssh/authorized_keys.d/.gitignore
 .vnc/*
 !.vnc/xstartup
+!.zsh/.zcompdump
