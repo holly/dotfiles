@@ -7,6 +7,3 @@ export HOLLY_TOOLS_ETC_DIR=$HOLLY_TOOLS_DIR/etc
 export LOG_FACILITY=local1
 
 export PATH=$PATH:$HOLLY_TOOLS_BIN_DIR
-
-# tar-incremental-backup.sh
-export BACKUP_DEBUG=1
