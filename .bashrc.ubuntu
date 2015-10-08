@@ -113,6 +113,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+[ -z "$PS1" ] && return
+
 # setting
 export DOTFILES=$HOME/.dotfiles
 . $DOTFILES/exports
