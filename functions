@@ -1,3 +1,7 @@
+myip() {
+	curl -Ls http://httpbin.org/ip | perl -nlE 'say $1 if $_ =~ /"origin": "(.*)"/'
+}
+
 abs2rel() {
 	local file=$1
 	echo $(cd $(dirname $file) && pwd)/$(basename $file)
