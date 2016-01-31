@@ -7,7 +7,7 @@ OS_RELEASE=/etc/os-release
 if [ -e $REDHAT_RELEASE ]; then
 	OS=$(awk '{ print $1 }' $REDHAT_RELEASE | tr '[:upper:]' '[:lower:]')
 elif [ -e $OS_RELEASE ]; then
-	OS=$(grep -e '^ID=' $OS_RELEASE | sed -e 's/ID=//')
+	OS=$(grep -e '^ID=' $OS_RELEASE | sed -e 's/ID=//' | sed -e 's/"//g')
 else
 	OS=unknown
 fi
