@@ -229,13 +229,13 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/EnhCommentify.vim'
-NeoBundle 'vim-scripts/taglist.vim'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tyru/open-browser.vim'
+"NeoBundle 'vim-scripts/taglist.vim'
+"NeoBundle 'tpope/vim-markdown'
+"NeoBundle 'tyru/open-browser.vim'
 " ======================= "
 
 call neobundle#end()
 NeoBundleCheck
 
 " colorscheme 
-colorscheme blue
+colorscheme darkblue
