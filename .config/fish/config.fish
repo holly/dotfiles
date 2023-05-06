@@ -16,6 +16,7 @@ set -x FZF_CTRL_T_OPTS "--preview \"batcat --color=always --style=header,grid --
 
 abbr -a bat batcat
 abbr -a vi nvim
+abbr -a nvimrc "nvim $HOME/.config/nvim/init.vm"
 
 if command -sq terraform
     abbr -a tf terraform
