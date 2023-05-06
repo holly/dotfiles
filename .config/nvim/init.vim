@@ -167,6 +167,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tyru/open-browser.vim'
 Plug 'skanehira/preview-markdown.vim'
+Plug 'kdheepak/lazygit.nvim'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -248,6 +249,8 @@ let g:previm_enable_realtime = 1
 
 
 " ================== キーマップ ================== "
+let mapleader = "\<Space>"
+
 " ctrl+nでNERDTreeを起動できるようにする
 map <C-f> :NERDTreeToggle<CR>
 
@@ -287,3 +290,5 @@ nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 
+" setup mapping to call :LazyGit
+nnoremap <silent> <leader>lg :LazyGit<CR>
