@@ -51,7 +51,7 @@ abbr -a gl "git pull origin (git rev-parse --abbrev-ref HEAD)"
 # for terraform
 
 # for curl
-abbr -a c "curl -sfS"
+abbr -a c "curl -sfSL"
 abbr -a get "curl -XGET"
 abbr -a post "curl -XPOST"
 abbr -a put "curl -XPUT"
