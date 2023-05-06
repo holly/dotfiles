@@ -17,6 +17,9 @@ symlink_targets() {
     popd >/dev/null
 }
 
+echo ">> start dotfiles installation...."
+echo ""
+
 for c in ${DEPENDENCY_COMMANDS[@]}; do
 
     which $c >/dev/null
@@ -40,3 +43,8 @@ for f in $(symlink_targets); do
     fi
     ln -sfv "$LOCAL_DOTFILES/$f" "$HOME/$f"
 done
+
+fish -c "fisher update"
+
+echo ""
+echo ">> done."
