@@ -3,7 +3,7 @@
 set -u
 
 REPOSITORY_URL=https://github.com/holly/dotfiles.git
-DEPENDENCY_COMMANDS=(fish batcat nvim aws terraform ansible)
+DEPENDENCY_COMMANDS=(fish batcat nvim aws terraform ansible glow)
 LOCAL_DOTFILES="$HOME/.dotfiles"
 
 error() {
