@@ -6,7 +6,7 @@ set -x LANG ja_JP.UTF-8
 set -x TZ Asia/Tokyo
 set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x PATH "$PATH:$HOME/.local/bin"
-
+set -x EDITOR nvim
 set -x RIPGREP_CONFIG_PATH "$HOME/.ripgreprc"
 
 set -x FZF_DEFAULT_OPTS "--height 50% --reverse --border"
@@ -47,8 +47,6 @@ abbr -a gs "git status -sb"
 abbr -a gc "git checkout"
 abbr -a gp "git push origin (git rev-parse --abbrev-ref HEAD)"
 abbr -a gl "git pull origin (git rev-parse --abbrev-ref HEAD)"
-
-# for terraform
 
 # for curl
 abbr -a c "curl -sfSL"
