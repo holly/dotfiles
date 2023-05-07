@@ -50,6 +50,7 @@ abbr -a gcm "git commit --verbose"
 abbr -a gph "git push origin (git rev-parse --abbrev-ref HEAD)"
 abbr -a gpl "git pull origin (git rev-parse --abbrev-ref HEAD)"
 abbr -a gdf 'git diff --word-diff'
+abbr -a gnb 'git switch -c'
 
 # for curl
 abbr -a c "curl -sfSL"

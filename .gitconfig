@@ -20,6 +20,8 @@
 	aliases = "!git config --get-regexp alias | perl -nlpe 's/^alias\\.//g; s/ / = /' | sort"
 	ls = ls-files
 	df = diff
+	nb = switch -c
+
 [color]
 	ui = auto
 [http]
