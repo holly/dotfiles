@@ -13,7 +13,7 @@ set -x FZF_CTRL_T_COMMAND 'rg --files --hidden --follow --glob \"!.git/*\"'
 set -x FZF_CTRL_T_OPTS "--preview \"batcat --color=always --style=header,grid --line-range :100 {}\""
 
 
-fish_add_path $HOME/.local/bin"
+fish_add_path "$HOME/.local/bin"
 
 abbr -a bat batcat
 abbr -a vi nvim
