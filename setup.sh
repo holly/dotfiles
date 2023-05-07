@@ -32,6 +32,9 @@ for c in ${DEPENDENCY_COMMANDS[@]}; do
     fi
 done
 
+# fisher all plugin update
+fish -c "fisher update"
+
 if [[ -d $LOCAL_DOTFILES ]]; then
     echo "dotfiles repository is installed. remove repository and force install."
     rm -frv $LOCAL_DOTFILES
@@ -46,8 +49,6 @@ for f in $(symlink_targets); do
     ln -sfv "$LOCAL_DOTFILES/$f" "$HOME/$f"
 done
 
-# fisher all plugin update
-fish -c "fisher update"
 
 # install vim-plug
 curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
