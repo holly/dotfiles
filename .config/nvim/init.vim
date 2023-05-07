@@ -167,6 +167,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tyru/open-browser.vim'
 Plug 'skanehira/preview-markdown.vim'
+Plug 'nickeb96/fish.vim'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
