@@ -5,7 +5,6 @@ end
 set -x LANG ja_JP.UTF-8
 set -x TZ Asia/Tokyo
 set -x XDG_DATA_HOME "$HOME/.local/share"
-set -x PATH "$PATH:$HOME/.local/bin"
 set -x EDITOR nvim
 set -x RIPGREP_CONFIG_PATH "$HOME/.ripgreprc"
 
@@ -14,9 +13,11 @@ set -x FZF_CTRL_T_COMMAND 'rg --files --hidden --follow --glob \"!.git/*\"'
 set -x FZF_CTRL_T_OPTS "--preview \"batcat --color=always --style=header,grid --line-range :100 {}\""
 
 
+fish_add_path $HOME/.local/bin"
+
 abbr -a bat batcat
 abbr -a vi nvim
-abbr -a nvimrc "nvim $HOME/.config/nvim/init.vm"
+abbr -a vimrc "nvim $HOME/.config/nvim/init.vm"
 
 if command -sq terraform
     abbr -a tf terraform
@@ -43,11 +44,12 @@ abbr -a dt "date --iso-8601=seconds"
 abbr -a g  "git"
 abbr -a ga "git add . && git add -u && git status"
 abbr -a gb "git fetch && git branch -a"
-abbr -a gm "git commit --verbose -m"
 abbr -a gs "git status -sb"
 abbr -a gc "git checkout"
-abbr -a gp "git push origin (git rev-parse --abbrev-ref HEAD)"
-abbr -a gl "git pull origin (git rev-parse --abbrev-ref HEAD)"
+abbr -a gcm "git commit --verbose"
+abbr -a gph "git push origin (git rev-parse --abbrev-ref HEAD)"
+abbr -a gpl "git pull origin (git rev-parse --abbrev-ref HEAD)"
+abbr -a gdf 'git diff --word-diff'
 
 # for curl
 abbr -a c "curl -sfSL"
