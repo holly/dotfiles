@@ -167,7 +167,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tyru/open-browser.vim'
 Plug 'skanehira/preview-markdown.vim'
-Plug 'kdheepak/lazygit.nvim'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -291,4 +290,4 @@ nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 
 " setup mapping to call :LazyGit
-nnoremap <silent> <leader>lg :LazyGit<CR>
+"nnoremap <silent> <leader>lg :LazyGit<CR>
