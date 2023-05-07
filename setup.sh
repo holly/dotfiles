@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+set -e
 set -u
+set -o pipefail
 
 REPOSITORY_URL=https://github.com/holly/dotfiles.git
 DEPENDENCY_COMMANDS=(fish batcat nvim aws terraform ansible glow fzf rg)
@@ -44,11 +46,12 @@ for f in $(symlink_targets); do
     ln -sfv "$LOCAL_DOTFILES/$f" "$HOME/$f"
 done
 
-# install vim-plug
-curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
 # fisher all plugin update
 fish -c "fisher update"
+
+# install vim-plug
+curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim -c PlugInstall -c q -c q
 
 echo ""
 echo ">> done."
