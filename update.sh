@@ -6,5 +6,12 @@ set -o pipefail
 
 cd $(dirname $0)
 
-git fetch origin
+local_hash=$(git log -1 --pretty=%H HEAD)
+remote_hash=$(git log -1 --pretty=%H origin/HEAD)
 
+if [[ "$local_hash" == "$remote_hash" ]]; then
+    echo "local and remote branch are syncronized."
+    exit 0
+fi
+
+git pull origin main
