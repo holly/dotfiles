@@ -34,7 +34,7 @@ for c in ${DEPENDENCY_COMMANDS[@]}; do
 done
 
 if [[ -d $LOCAL_DOTFILES ]]; then
-    echo "dotfiles repository is installed. remove repository and force install."
+    warn "dotfiles repository is installed. remove repository and force install."
     rm -frv $LOCAL_DOTFILES
 fi
 
