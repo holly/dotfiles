@@ -8,4 +8,3 @@ cd $(dirname $0)
 
 git fetch origin
 
-
