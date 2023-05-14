@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
 set -u
 set -o pipefail
 
@@ -8,10 +7,12 @@ REPOSITORY_URL=https://github.com/holly/dotfiles.git
 DEPENDENCY_COMMANDS=(fish batcat nvim aws terraform ansible glow fzf rg)
 LOCAL_DOTFILES="$HOME/.dotfiles"
 
-error() {
-    echo "[ERROR] $@"
-    exit 1
+warn() {
+    echo -ne "\e[33;1m"
+    echo "[WARN] $@"
+    echo -ne "\e[m"
 }
+
 
 symlink_targets() {
     pushd $LOCAL_DOTFILES >/dev/null
@@ -28,12 +29,9 @@ for c in ${DEPENDENCY_COMMANDS[@]}; do
     if [[ $? -eq 0 ]]; then
         echo "$c is installed."
     else
-        error "$c is not installed."
+        warn "$c is not installed."
     fi
 done
-
-# fisher all plugin update
-fish -c "fisher update"
 
 if [[ -d $LOCAL_DOTFILES ]]; then
     echo "dotfiles repository is installed. remove repository and force install."
@@ -48,6 +46,9 @@ for f in $(symlink_targets); do
     fi
     ln -sfv "$LOCAL_DOTFILES/$f" "$HOME/$f"
 done
+
+# fisher all plugin update
+fish -c "fisher update"
 
 
 # install vim-plug
