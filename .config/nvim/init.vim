@@ -248,7 +248,10 @@ let g:previm_enable_realtime = 1
 "let g:previm_open_cmd = '/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe $@'
 
 
-" ================== キーマップ ================== "
+" ================= startup ================== "
+autocmd VimEnter * NERDTree
+
+" ================== keymap ================== "
 let mapleader = "\<Space>"
 
 " ctrl+nでNERDTreeを起動できるようにする
