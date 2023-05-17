@@ -1,0 +1,10 @@
+[Unit]
+Description=dotfiles update timer
+
+[Timer]
+Type=oneshot
+OnCalendar=*-*-* *:00/10:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

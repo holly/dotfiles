@@ -55,5 +55,8 @@ nvim -c PlugInstall -c ':q!' -c ':q!'
 fish -c "fisher update"
 ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.config/fish/functions/fish_greeting.fish"
 
+# daemon-reload
+systemctl --user daemon-reload
+
 echo ""
 echo ">> done."

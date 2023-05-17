@@ -1,0 +1,10 @@
+[Unit]
+Description=dotfiles update
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash -c "test -d $HOME/.dotfiles && $HOME/.dotfiles/update.sh"
+
+[Install]
+WantedBy=multi-user.target
