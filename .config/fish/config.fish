@@ -33,7 +33,7 @@ end
 # for pyenv
 if test -d "$HOME/.pyenv"
     set -x PENV_ROOT $HOME/.pyenv
-    fish_add_path $PYENV_ROOT/binY
+    fish_add_path $PYENV_ROOT/bin
 end
 
 # for common abbr
