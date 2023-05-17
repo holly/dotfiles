@@ -47,8 +47,7 @@ for f in $(symlink_targets); do
     ln -sfv "$LOCAL_DOTFILES/$f" "$HOME/$f"
 done
 
-# install vim-plug
-curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# install nvim plugins by vim-plug
 nvim -c PlugInstall -c ':q!' -c ':q!'
 
 # update all fisher plugins
