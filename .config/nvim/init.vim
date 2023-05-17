@@ -249,7 +249,7 @@ let g:previm_enable_realtime = 1
 
 
 " ================= startup ================== "
-autocmd VimEnter * NERDTree
+"autocmd VimEnter * NERDTree
 
 " ================== keymap ================== "
 let mapleader = "\<Space>"
