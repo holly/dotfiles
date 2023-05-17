@@ -16,7 +16,7 @@ warn() {
 
 symlink_targets() {
     pushd $LOCAL_DOTFILES >/dev/null
-    find . \( -type d -name ".git"  -o -name README.md -o -name .gitignore -o -name setup.sh \) -prune -o -type f -print | perl -nlpe 's/^\.\///'
+    find . \( -type d -name ".git"  -o -name README.md -o -name .gitignore -o -name setup.sh -o -name update.sh \) -prune -o -type f -print | perl -nlpe 's/^\.\///'
     popd >/dev/null
 }
 
