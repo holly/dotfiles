@@ -15,7 +15,6 @@ set -x FZF_CTRL_T_OPTS "--preview \"batcat --color=always --style=header,grid --
 
 fish_add_path "$HOME/.local/bin"
 
-abbr -a bat batcat
 abbr -a vi nvim
 abbr -a vimrc "nvim $HOME/.config/nvim/init.vm"
 
