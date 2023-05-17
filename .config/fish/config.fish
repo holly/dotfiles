@@ -30,6 +30,12 @@ if command -sq aws
     abbr -a ec2 "aws ec2"
 end
 
+# for pyenv
+if test -d "$HOME/.pyenv"
+    set -x PENV_ROOT $HOME/.pyenv
+    fish_add_path $PYENV_ROOT/binY
+end
+
 # for common abbr
 abbr -a x "chmod +x"
 abbr -a strace "strace -s 1024 -tt -f -T -v"
@@ -55,6 +61,11 @@ abbr -a gnb 'git switch -c'
 # for curl
 abbr -a c "curl -sfSL"
 abbr -a get "curl -sfSL -XGET"
+abbr -a download "curl -sfSL -XGET -O"
 abbr -a post "curl -sfSL -XPOST"
 abbr -a put "curl -sfSL -XPUT"
 abbr -a cw "curl -sfSL -o /dev/null -w '%{json}'"
+
+
+# for pyenv init
+pyenv init - | source
