@@ -2,7 +2,6 @@
 Description=dotfiles update timer
 
 [Timer]
-Type=oneshot
 OnCalendar=*-*-* *:00/10:00
 Persistent=true
 

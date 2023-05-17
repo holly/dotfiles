@@ -57,6 +57,9 @@ ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.conf
 
 # daemon-reload
 systemctl --user daemon-reload
+for unit in $(echo service timer); do
+    systemctl --user enable "dotfiles.$unit"
+done
 
 echo ""
 echo ">> done."
