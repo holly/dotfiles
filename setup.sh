@@ -49,7 +49,7 @@ done
 
 # install vim-plug
 curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim -c PlugInstall -c q -c q
+nvim -c PlugInstall -c ':q!' -c ':q!'
 
 # update all fisher plugins
 fish -c "fisher update"
