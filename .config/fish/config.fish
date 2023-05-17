@@ -31,7 +31,7 @@ end
 
 # for pyenv
 if test -d "$HOME/.pyenv"
-    set -x PENV_ROOT $HOME/.pyenv
+    set -x PYENV_ROOT $HOME/.pyenv
     fish_add_path $PYENV_ROOT/bin
 end
 
