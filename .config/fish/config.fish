@@ -61,9 +61,7 @@ abbr -a gnb 'git switch -c'
 # for curl
 abbr -a c "curl -sfSL"
 abbr -a get "curl -sfSL -XGET"
-abbr -a download "curl -sfSL -XGET -O"
+abbr -a dl "curl -sfSL -XGET -O"
 abbr -a post "curl -sfSL -XPOST"
 abbr -a put "curl -sfSL -XPUT"
 abbr -a cw "curl -sfSL -o /dev/null -w '%{json}'"
-
-
