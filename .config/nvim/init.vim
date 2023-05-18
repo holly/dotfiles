@@ -69,7 +69,7 @@ set cursorline
 au QuickfixCmdPost vimgrep cw
 
 " 新規ファイル作成時に拡張子に応じて、雛形ファイルから開くようにする
-"autocmd BufNewFile *.sh 0r ~/.vim/template/sh.txt
+autocmd BufNewFile *.sh 0r ~/.config/nvim/template/sh.txt
 "autocmd BufNewFile *.pl 0r ~/.vim/template/perl.txt
 "autocmd BufNewFile *.py 0r ~/.vim/template/python.txt
 
