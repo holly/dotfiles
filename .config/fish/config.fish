@@ -33,6 +33,7 @@ end
 if test -d "$HOME/.pyenv"
     set -x PYENV_ROOT $HOME/.pyenv
     fish_add_path $PYENV_ROOT/bin
+    $PYENV_ROOT/bin/pyenv init - | source
 end
 
 # for common abbr
@@ -66,5 +67,3 @@ abbr -a put "curl -sfSL -XPUT"
 abbr -a cw "curl -sfSL -o /dev/null -w '%{json}'"
 
 
-# for pyenv init
-pyenv init - | source
