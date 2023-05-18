@@ -2,6 +2,7 @@
 
 set -u
 set -o pipefail
+set -C
 
 REPOSITORY_URL=https://github.com/holly/dotfiles.git
 DEPENDENCY_COMMANDS=(fish batcat nvim aws terraform ansible glow fzf rg)
