@@ -16,6 +16,7 @@ set -x FZF_CTRL_T_OPTS "--preview \"batcat --color=always --style=header,grid --
 fish_add_path "$HOME/.local/bin"
 
 abbr -a vi nvim
+abbr -a view "nvim -R"
 abbr -a vimrc "nvim $HOME/.config/nvim/init.vm"
 
 if command -sq terraform
