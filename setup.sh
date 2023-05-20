@@ -56,6 +56,7 @@ ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.conf
 systemctl --user daemon-reload
 for unit in $(echo service timer); do
     systemctl --user enable "dotfiles.$unit"
+    systemctl --user start "dotfiles.$unit"
 done
 
 # install nvim plugins by vim-plug
