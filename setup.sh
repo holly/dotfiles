@@ -48,9 +48,6 @@ for f in $(symlink_targets); do
     ln -sfv "$LOCAL_DOTFILES/$f" "$HOME/$f"
 done
 
-# install nvim plugins by vim-plug
-nvim -c PlugInstall -c ':q!' -c ':q!'
-
 # update all fisher plugins
 fish -c "fisher update"
 ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.config/fish/functions/fish_greeting.fish"
@@ -60,6 +57,9 @@ systemctl --user daemon-reload
 for unit in $(echo service timer); do
     systemctl --user enable "dotfiles.$unit"
 done
+
+# install nvim plugins by vim-plug
+nvim -c PlugInstall -c ':q!' -c ':q!'
 
 echo ""
 echo ">> done."
