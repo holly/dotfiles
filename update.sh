@@ -15,6 +15,8 @@ if [[ "$local_hash" == "$remote_hash" ]]; then
     exit 0
 fi
 
+git pull --tags
 git pull origin (git rev-parse --abbrev-ref HEAD)
+git fetch -p
 
 systemctl --user daemon-reload
