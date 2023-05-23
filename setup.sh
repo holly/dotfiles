@@ -128,12 +128,6 @@ unzip "terraform_${TF_VERSION}_linux_amd64.zip"
 mv terraform $LOCAL_INSTALL_DIR
 rm "terraform_${TF_VERSION}_linux_amd64.zip"
 
-# install vim-plug
-curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# install nvim plugins by vim-plug
-nvim -c PlugInstall -c ':q!' -c ':q!'
-
 # install fisher and more plugins
 fish -c "curl -sfL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 cat <<EOL | xargs -I% fish -c "fisher install %"
@@ -144,8 +138,14 @@ jethrokuan/z
 jethrokuan/fzf
 EOL
 
-# symlink
+# symlink start fish_logo display
 ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.config/fish/functions/fish_greeting.fish"
+
+# install vim-plug
+curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# install nvim plugins by vim-plug
+nvim -c PlugInstall -c ':q!' -c ':q!'
 
 echo ""
 echo ">> done."
