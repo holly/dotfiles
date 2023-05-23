@@ -145,7 +145,7 @@ ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.conf
 curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install nvim plugins by vim-plug
-nvim -c PlugInstall -c ':q!' -c ':q!'
+#nvim -c PlugInstall -c ':q!' -c ':q!'
 
 echo ""
 echo ">> done."
