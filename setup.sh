@@ -65,10 +65,6 @@ for f in $(symlink_targets); do
     ln -sfv "$LOCAL_DOTFILES/$f" "$HOME/$f"
 done
 
-# update all fisher plugins
-fish -c "fisher update"
-ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.config/fish/functions/fish_greeting.fish"
-
 # daemon-reload
 systemctl --user daemon-reload
 for unit in $(echo service timer); do
@@ -138,7 +134,7 @@ curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --
 # install nvim plugins by vim-plug
 nvim -c PlugInstall -c ':q!' -c ':q!'
 
-# install fisher and more plugin
+# install fisher and more plugins
 fish -c "curl -sfL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 cat <<EOL | xargs -I% fish -c "fisher install %"
 oh-my-fish/theme-bobthefish
@@ -147,6 +143,9 @@ jethrokuan/z
 0rax/fish-bd
 jethrokuan/fzf
 EOL
+
+# symlink
+ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.config/fish/functions/fish_greeting.fish"
 
 echo ""
 echo ">> done."
