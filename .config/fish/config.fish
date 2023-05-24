@@ -2,22 +2,28 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-set -x LANG ja_JP.UTF-8
-set -x TZ Asia/Tokyo
-set -x XDG_DATA_HOME "$HOME/.local/share"
-set -x EDITOR nvim
-set -x RIPGREP_CONFIG_PATH "$HOME/.ripgreprc"
-
-set -x FZF_DEFAULT_OPTS "--height 50% --reverse --border"
-set -x FZF_CTRL_T_COMMAND 'rg --files --hidden --follow --glob \"!.git/*\"'
-set -x FZF_CTRL_T_OPTS "--preview \"batcat --color=always --style=header,grid --line-range :100 {}\""
-
-
+###################################
+# environ variables
+###################################
 fish_add_path "$HOME/.local/bin"
 
+set -gx LANG ja_JP.UTF-8
+set -gx TZ Asia/Tokyo
+set -gx XDG_DATA_HOME "$HOME/.local/share"
+set -gx EDITOR nvim
+set -gx RIPGREP_CONFIG_PATH "$HOME/.ripgreprc"
+
+set -gx FZF_DEFAULT_OPTS "--height 50% --reverse --border"
+set -gx FZF_CTRL_T_COMMAND 'rg --files --hidden --follow --glob \"!.git/*\"'
+set -gx FZF_CTRL_T_OPTS "--preview \"batcat --color=always --style=header,grid --line-range :100 {}\""
+
+
+###################################
+# abbr
+###################################
 abbr -a vi nvim
 abbr -a view "nvim -R"
-abbr -a vimrc "nvim $HOME/.config/nvim/init.vm"
+abbr -a vimrc "nvim $HOME/.config/nvim/init.vim"
 
 if command -sq terraform
     abbr -a tf terraform
@@ -37,7 +43,10 @@ if test -d "$HOME/.pyenv"
     $PYENV_ROOT/bin/pyenv init - | source
 end
 
-# for common abbr
+###################################
+# environ variables
+###################################
+# for common
 abbr -a x "chmod +x"
 abbr -a strace "strace -s 1024 -tt -f -T -v"
 abbr -a od "od -tcx1"
@@ -47,7 +56,7 @@ abbr -a tat "tar --ignore-failed-read -ptvzf"
 abbr -a epoch "date +%s"
 abbr -a dt "date --iso-8601=seconds"
 
-# for git abbr
+# for git 
 abbr -a g  "git"
 abbr -a ga "git add . && git add -u && git status"
 abbr -a gb "git fetch && git branch -a"
@@ -66,3 +75,21 @@ abbr -a dl "curl -sfSL -XGET -O"
 abbr -a post "curl -sfSL -XPOST"
 abbr -a put "curl -sfSL -XPUT"
 abbr -a cw "curl -sfSL -o /dev/null -w '%{json}'"
+
+
+###################################
+# functions
+###################################
+
+# for fisher update
+function fisher_update
+
+    fisher list
+    read -p "set_color green; echo '[Y/n]: '" -l line
+    if test $line != "Y"
+        echo "quit"
+        return
+    end
+    fisher update
+    ln -sfv $HOME/.dotfiles/.config/fish/functions/fish_greeting.fish $HOME/.config/fish/functions/fish_greeting.fish
+end
