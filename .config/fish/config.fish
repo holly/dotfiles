@@ -43,6 +43,12 @@ if test -d "$HOME/.pyenv"
     $PYENV_ROOT/bin/pyenv init - | source
 end
 
+# for tmux
+if command -sq tmux
+    abbr -a t "tmux -u"
+    abbr -a ta "tmux attach"
+end
+
 ###################################
 # environ variables
 ###################################
@@ -79,19 +85,3 @@ abbr -a put "curl -sfSL -XPUT"
 abbr -a cw "curl -sfSL -o /dev/null -w '%{json}'"
 
 
-###################################
-# functions
-###################################
-
-# for fisher update
-function fup
-
-    fisher list
-    read -p "set_color green; echo '[Y/n]: '" -l ans
-    if test $ans != "Y"
-        echo "quit."
-        return
-    end
-    fisher update
-    ln -sfv $HOME/.dotfiles/.config/fish/functions/fish_greeting.fish $HOME/.config/fish/functions/fish_greeting.fish
-end
