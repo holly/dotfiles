@@ -55,6 +55,8 @@ abbr -a txf "tar --ignore-failed-read -pxvzf"
 abbr -a tat "tar --ignore-failed-read -ptvzf"
 abbr -a epoch "date +%s"
 abbr -a dt "date --iso-8601=seconds"
+abbr -a du "duf"
+
 
 # for git 
 abbr -a g  "git"
@@ -82,12 +84,12 @@ abbr -a cw "curl -sfSL -o /dev/null -w '%{json}'"
 ###################################
 
 # for fisher update
-function fisher_update
+function fupe
 
     fisher list
-    read -p "set_color green; echo '[Y/n]: '" -l line
-    if test $line != "Y"
-        echo "quit"
+    read -p "set_color green; echo '[Y/n]: '" -l ans
+    if test $ans != "Y"
+        echo "quit."
         return
     end
     fisher update

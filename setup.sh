@@ -136,6 +136,8 @@ laughedelic/fish_logo
 jethrokuan/z
 0rax/fish-bd
 jethrokuan/fzf
+holly/source-fish
+holly/fish-pwgen
 EOL
 
 # symlink start fish_logo display
