@@ -84,7 +84,7 @@ abbr -a cw "curl -sfSL -o /dev/null -w '%{json}'"
 ###################################
 
 # for fisher update
-function fupe
+function fup
 
     fisher list
     read -p "set_color green; echo '[Y/n]: '" -l ans

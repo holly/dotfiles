@@ -34,7 +34,7 @@ warn() {
 
 symlink_targets() {
     pushd $LOCAL_DOTFILES >/dev/null
-    find . \( -type d -name ".git"  -o -name README.md -o -name .gitignore -o -name setup.sh -o -name update.sh -o -name fish_greeting.fish \) -prune -o -type f -print | perl -nlpe 's/^\.\///'
+    find . \( -type d -name ".git"  -o -name README.md -o -name .gitignore -o -name setup.sh -o -name update.sh -o -name fish_greeting.fish  -o -name fish_plugins \) -prune -o -type f -print | perl -nlpe 's/^\.\///'
     popd >/dev/null
 }
 
@@ -128,26 +128,27 @@ unzip "terraform_${TF_VERSION}_linux_amd64.zip"
 mv terraform $LOCAL_INSTALL_DIR
 rm "terraform_${TF_VERSION}_linux_amd64.zip"
 
-# install fisher and more plugins
-fish -c "curl -sfL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
-cat <<EOL | xargs -I% fish -c "fisher install %"
-oh-my-fish/theme-bobthefish
-laughedelic/fish_logo
-jethrokuan/z
-0rax/fish-bd
-jethrokuan/fzf
-holly/source-fish
-holly/fish-pwgen
-EOL
-
-# symlink start fish_logo display
-ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.config/fish/functions/fish_greeting.fish"
-
 # install vim-plug
 curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install nvim plugins by vim-plug
 #nvim -c PlugInstall -c ':q!' -c ':q!'
 
-echo ""
-echo ">> done."
+# install fisher and more plugins
+fish -c "curl -sfL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source; sleep 3 && fisher install jorgebucaran/fisher"
+sleep 3
+cat "$LOCAL_DOTFILES/fish_plugins" | while read line; do
+    fish -c "fisher install $line"
+done
+#cat <<EOL | xargs -I% fish -c "fisher install %"
+#oh-my-fish/theme-bobthefish
+#laughedelic/fish_logo
+#jethrokuan/z
+#0rax/fish-bd
+#jethrokuan/fzf
+#holly/source-fish
+#holly/fish-pwgen
+#EOL
+
+# symlink start fish_logo display
+ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.config/fish/functions/fish_greeting.fish"
