@@ -37,11 +37,42 @@ function has_bom
     end
     set -l f $argv[1]
     if not test -f $f
-        error "argv[1]($f) is not file"
+        error "argv $f is not file"
         return $status
     end
     string match -ar '\(with BOM\)' (file $f) >/dev/null
     return $status
+end
+
+function del_bom
+
+    if is_stdin
+        # -0777 is slurp mode
+        # -CSDL is https://pointoht.ti-da.net/e8367529.html
+        perl -0777 -CSDL -nlpe "s/^\x{feff}//"
+    else
+        if test -f $argv[1]
+            perl -i -CSDL -nlpe 's/^\x{feff}//' $argv[1]
+        else
+            error "argv $argv[1] is not file"
+        end
+    end
+end
+
+function guess
+
+    if test (count $argv) -eq 0
+        error "argv is required"
+        return 1
+    end
+    set -l f $argv[1]
+    if not test -f $f
+        error "argv $f is not file"
+        return $status
+    end
+    string replace -ar  '.*; charset=(.*)$' '$1' (file -i $f) 
+    return $status
+e
 end
 
 function fup
