@@ -62,7 +62,7 @@ abbr -a tat "tar --ignore-failed-read -ptvzf"
 abbr -a epoch "date +%s"
 abbr -a dt "date --iso-8601=seconds"
 abbr -a du "duf"
-
+abbr -a myip "curl https://ifconfig.me && echo"
 
 # for git 
 abbr -a g  "git"
