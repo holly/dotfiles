@@ -12,7 +12,7 @@ PYENV_REPO=https://github.com/pyenv/pyenv.git
 PYENV_VIRTUALENV_REPO=https://github.com/yyuu/pyenv-virtualenv.git
 
 if [[ -z "$PYTHON_VERSION" ]]; then
-    PYTHON_VERSION=3.12.0a7
+    PYTHON_VERSION=3.12.0b1
 fi
 if [[ -z "$GLOW_VERSION" ]]; then
     GLOW_VERSION=1.5.0
@@ -28,6 +28,12 @@ TF_DOWNLOAD_URL="https://releases.hashicorp.com/terraform/${TF_VERSION}/terrafor
 warn() {
     echo -ne "\e[33;1m"
     echo "[WARN] $@"
+    echo -ne "\e[m"
+}
+
+error() {
+    echo -ne "\e[31;1m"
+    echo "[ERROR] $@"
     echo -ne "\e[m"
 }
 
@@ -97,6 +103,10 @@ fi
 eval "$(pyenv init -)"
 if [[ ! -d "$PYENV_ROOT/versions/$PYTHON_VERSION" ]]; then
     pyenv install --verbose $PYTHON_VERSION
+    if [[ $? -eq 0 ]]; then
+        echo "python $PYTHON_VERSION install is failed."
+        exit 1
+    fi
 fi
 pyenv local $PYTHON_VERSION
 
