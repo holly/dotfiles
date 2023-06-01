@@ -56,7 +56,7 @@ end
 abbr -a x "chmod +x"
 abbr -a strace "strace -s 1024 -tt -f -T -v"
 abbr -a od "od -tcx1"
-abbr -a tcf "tar --exclude-backups --exclude=\"*.old\" --exclude=\"*.swp\" --exclude=\"*.tmp\" --exclude=\"*.org\" --exclude=\"*.pid\" --exclude=\"lock\" --exclude=\"*~\" --ignore-failed-read --one-file-system -pcvf"
+abbr -a tcf "tar --exclude-backups --exclude=\"*.old\" --exclude=\"*.swp\" --exclude=\"*.tmp\" --exclude=\"*.org\" --exclude=\"*.pid\" --exclude=\"lock\" --exclude=\"*~\" --ignore-failed-read --one-file-system -pcvzf"
 abbr -a txf "tar --ignore-failed-read -pxvf"
 abbr -a tat "tar --ignore-failed-read -ptvf"
 abbr -a epoch "date +%s"
