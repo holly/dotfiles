@@ -17,7 +17,7 @@ set -gx FZF_DEFAULT_OPTS "--height 50% --reverse --border"
 set -gx FZF_CTRL_T_COMMAND 'rg --files --hidden --follow --glob \"!.git/*\"'
 set -gx FZF_CTRL_T_OPTS "--preview \"batcat --color=always --style=header,grid --line-range :100 {}\""
 
-set -gx MANPAGER="sh -c 'col -bx | bat -l man -p'"
+set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 ###################################
 # abbr
