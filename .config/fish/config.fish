@@ -49,7 +49,12 @@ if command -sq tmux
     abbr -a t "tmux -u"
     abbr -a ta "tmux attach"
 end
-
+# for exa
+if command -sq exa
+    abbr -a ls "exa --icons"
+    abbr -a lt 'exa -T -L 3 -a -I ".git|.cache|.terraform" --icons'
+    abbr -a ltl 'exa -T -L 3 -a -I ".git|.cache|.terraform" -l --icons'
+end
 ###################################
 # environ variables
 ###################################
