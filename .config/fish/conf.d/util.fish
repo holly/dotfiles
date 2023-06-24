@@ -88,3 +88,27 @@ function fup
     ln -sfv $HOME/.dotfiles/.config/fish/functions/fish_greeting.fish $HOME/.config/fish/functions/fish_greeting.fish
 end
 
+function lf
+
+    if test (count $argv) -eq 0
+        error "argv is required"
+        return 1
+    end
+    set -l f $argv[1]
+    if not test -f $f
+        error "argv $f is not file"
+        return $status
+    end
+    set -l res (file $f)
+    if string match -ar 'with CRLF line terminators' $res >/dev/null
+        echo "CRLF"
+    else if string match -ar 'with CR line terminators' $res >/dev/null
+        echo "CR"
+    else if string match -ar 'text' $res >/dev/null
+        echo "LF"
+    else
+        echo "BINARY"
+    end
+end
+
+
