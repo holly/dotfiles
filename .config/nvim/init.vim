@@ -174,6 +174,18 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'previm/previm'
 
+" lsp
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'onsails/lspkind-nvim'
+Plug 'ray-x/cmp-treesitter'
+
 " == old plugins =="
 "Plug 'cocopon/iceberg.vim'
 "Plug 'vim-scripts/EnhCommentify.vim'
