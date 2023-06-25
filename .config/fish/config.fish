@@ -55,9 +55,7 @@ if command -sq exa
     abbr -a lt 'exa -T -L 3 -a -I ".git|.cache|.terraform" --icons'
     abbr -a ltl 'exa -T -L 3 -a -I ".git|.cache|.terraform" -l --icons'
 end
-###################################
-# environ variables
-###################################
+
 # for common
 abbr -a x "chmod +x"
 abbr -a strace "strace -s 1024 -tt -f -T -v"
@@ -70,6 +68,8 @@ abbr -a dt "date --iso-8601=seconds"
 abbr -a df "duf"
 abbr -a myip "curl https://ifconfig.me && echo"
 abbr -a comma "printf \"%'d\n\""
+abbr -a delempty "egrep -v '^\$'"
+abbr -a alignlf "perl -i -nlpe 's/\x0d//g'"
 
 # for git 
 abbr -a g  "git"

@@ -1,7 +1,11 @@
 ###################################
 # utility functions
 ###################################
+function abs2real
 
+    set -l f $argv[1]
+    fish -c "echo (cd (dirname $f) && pwd)/(basename $f)"
+end
 
 function encode
 
@@ -129,14 +133,24 @@ function lf
     end
 end
 
-function lfalign
 
-    set -l f $argv[1]
-    if test -f $f
-        perl -i -nlpe 's/\x0d//g' $f
-    else
-        error "argv $f is not file"
-    end
+function human_readable_size
+
+    set -l number $argv[1]
+
+    set -l kb 1024
+    set -l mb (math "$kb * 1024")
+    set -l gb (math "$mb * 1024")
+    set -l tb (math "$gb * 1024")
+    set -l pb (math "$tb * 1024")
+    set -l scale 2
+
+    test $number -lt $kb && echo $number"B" && return 0
+    test $number -lt $mb && echo (math -s$scale $number/$kb)"KB" && return 0
+    test $number -lt $gb && echo (math -s$scale $number/$mb)"MB" && return 0
+    test $number -lt $tb && echo (math -s$scale $number/$gb)"GB" && return 0
+    test $number -lt $pb && echo (math -s$scale $number/$tb)"TB" && return 0
+    echo (math -s$scale $number/$pb)"PB"
 end
 
 ####################
