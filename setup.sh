@@ -10,6 +10,7 @@ LOCAL_INSTALL_DIR="$HOME/.local/bin"
 
 PYENV_REPO=https://github.com/pyenv/pyenv.git
 PYENV_VIRTUALENV_REPO=https://github.com/yyuu/pyenv-virtualenv.git
+TFENV_REPO=https://github.com/tfutils/tfenv.git
 
 if [[ -z "$PYTHON_VERSION" ]]; then
     PYTHON_VERSION=3.12.0b1
@@ -20,9 +21,8 @@ fi
 GLOW_DOWNLOAD_URL="https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_${GLOW_VERSION}_Linux_x86_64.tar.gz"
 
 if [[ -z "$TF_VERSION" ]]; then
-    TF_VERSION=1.4.6
+    TF_VERSION=1.5.2
 fi
-TF_DOWNLOAD_URL="https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip"
 
 
 warn() {
@@ -99,6 +99,16 @@ else
     git clone $PYENV_VIRTUALENV_REPO "$PYENV_ROOT/plugins/pyenv-virtualenv"
 fi
 
+# tfenv install
+export TFENV_ROOT="$HOME/.tfenv"
+export PATH="$PATH:$TFENV_ROOT/bin"
+if [[ -d $TFENV_ROOT ]]; then
+    (cd $TFNV_ROOT; git pull origin $(git rev-parse --abbrev-ref HEAD))
+else
+    git clone $TFENV_REPO $TFENV_ROOT
+fi
+
+
 # install python
 eval "$(pyenv init -)"
 if [[ ! -d "$PYENV_ROOT/versions/$PYTHON_VERSION" ]]; then
@@ -133,10 +143,8 @@ git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 $HOME/.fzf/install --all
 
 # install terraform
-curl -sfLO $TF_DOWNLOAD_URL
-unzip "terraform_${TF_VERSION}_linux_amd64.zip"
-mv terraform $LOCAL_INSTALL_DIR
-rm "terraform_${TF_VERSION}_linux_amd64.zip"
+tfenv install latest
+tfenv use latest
 
 # install vim-plug
 curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
