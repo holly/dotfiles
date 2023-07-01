@@ -168,5 +168,11 @@ done
 #holly/fish-pwgen
 #EOL
 
+# install docker compose
+DOCKER_CONFIG=$HOME/.docker
+mkdir -p "$DOCKER_CONFIG/cli-plugins"
+curl -SL https://github.com/docker/compose/releases/download/v2.4.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+
 # symlink start fish_logo display
 ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.config/fish/functions/fish_greeting.fish"
