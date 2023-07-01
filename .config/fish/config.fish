@@ -46,7 +46,7 @@ end
 
 # for tfenv
 if test -d "$HOME/.tfenv"
-    set -x TFENV_ROOT $HOME/.pyenv
+    set -x TFENV_ROOT $HOME/.tfenv
     fish_add_path $TFENV_ROOT/bin
 end
 
