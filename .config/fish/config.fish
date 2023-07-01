@@ -44,6 +44,12 @@ if test -d "$HOME/.pyenv"
     $PYENV_ROOT/bin/pyenv init - | source
 end
 
+# for tfenv
+if test -d "$HOME/.tfenv"
+    set -x TFENV_ROOT $HOME/.pyenv
+    fish_add_path $TFENV_ROOT/bin
+end
+
 # for tmux
 if command -sq tmux
     abbr -a t "tmux -u"
