@@ -20,6 +20,7 @@ set -gx FZF_CTRL_T_OPTS "--preview \"batcat --color=always --style=header,grid -
 set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 set -gx DOCKER_CONFIG "$HOME/.docker"
+set -gx DOCKER_BUILDKIT 1
 
 ###################################
 # abbr
