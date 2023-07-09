@@ -67,7 +67,7 @@ if command -sq exa
 end
 
 # for docker
-if command -sq exa
+if command -sq docker
     abbr -a d "docker"
 end
 

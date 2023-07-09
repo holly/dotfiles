@@ -30,20 +30,20 @@ function error
     return 1
 end
 
-function is_executable_sudo
+function cando
 
     timeout --signal=2 1 sudo -l >/dev/null 2>&1
     return $status
 end
 
-function is_root
+function isroot
     if test (id -u) -eq 0
         return 0
     end
     return 1
 end
 
-function is_stdin
+function isstdin
 
     if test -t 0
         return 1
@@ -51,7 +51,7 @@ function is_stdin
     return 0
 end
 
-function has_bom
+function hasbom
 
     if test (count $argv) -eq 0
         error "argv is required"
@@ -66,7 +66,7 @@ function has_bom
     return $status
 end
 
-function del_bom
+function delbom
 
     if is_stdin
         # -0777 is slurp mode
@@ -94,7 +94,6 @@ function guess
     end
     string replace -ar  '.*; charset=(.*)$' '$1' (file -i $f) | string upper
     return $status
-e
 end
 
 function fup
