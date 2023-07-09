@@ -173,4 +173,14 @@ function s2w
     end
 end
 
+####################
+# override
+####################
+function apt
 
+    if cando
+        sudo /usr/bin/apt $argv
+    else
+        command apt $argv
+    end
+end
