@@ -13,7 +13,7 @@ PYENV_VIRTUALENV_REPO=https://github.com/yyuu/pyenv-virtualenv.git
 TFENV_REPO=https://github.com/tfutils/tfenv.git
 
 if [[ -z "$PYTHON_VERSION" ]]; then
-    PYTHON_VERSION=3.12.0b1
+    PYTHON_VERSION=3.11.4
 fi
 if [[ -z "$GLOW_VERSION" ]]; then
     GLOW_VERSION=1.5.0
