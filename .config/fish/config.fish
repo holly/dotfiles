@@ -29,28 +29,27 @@ abbr -a vi nvim
 abbr -a view "nvim -R"
 abbr -a vimrc "nvim $HOME/.config/nvim/init.vim"
 
-if command -sq terraform
-    abbr -a tf terraform
-    abbr -a tfa "terraform apply"
-    abbr -a tfp "terraform plan"
-    abbr -a tfd "terraform destroy"
-end
 if command -sq aws
     abbr -a s3  "aws s3"
     abbr -a ec2 "aws ec2"
 end
 
-# for pyenv
+# for pyenv and python
 if test -d "$HOME/.pyenv"
     set -x PYENV_ROOT $HOME/.pyenv
     fish_add_path $PYENV_ROOT/bin
     $PYENV_ROOT/bin/pyenv init - | source
+    abbr -a serve "python -m http.server 8000"
 end
 
-# for tfenv
+# for tfenv and terraform
 if test -d "$HOME/.tfenv"
     set -x TFENV_ROOT $HOME/.tfenv
     fish_add_path $TFENV_ROOT/bin
+    abbr -a tf terraform
+    abbr -a tfa "terraform apply"
+    abbr -a tfp "terraform plan"
+    abbr -a tfd "terraform destroy"
 end
 
 # for tmux
@@ -69,6 +68,7 @@ end
 # for docker
 if command -sq docker
     abbr -a d "docker"
+    abbr -a drmi "docker images | grep -v REPO | awk '{ print \$3 }' | xargs docker rmi "
 end
 
 
@@ -98,6 +98,7 @@ abbr -a gph "git push origin (git rev-parse --abbrev-ref HEAD)"
 abbr -a gpl "git pull origin (git rev-parse --abbrev-ref HEAD)"
 abbr -a gdf 'git diff --word-diff'
 abbr -a gnb 'git switch -c'
+abbr -a gcl 'git clone'
 
 # for curl
 abbr -a c "curl -sfSL"

@@ -184,3 +184,12 @@ function apt
         command apt $argv
     end
 end
+
+function systemctl
+
+    if cando
+        sudo /usr/bin/systemctl $argv
+    else
+        command systemctl $argv
+    end
+end
