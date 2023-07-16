@@ -90,7 +90,7 @@ abbr -a delempty "egrep -v '^\$'"
 abbr -a alignlf "perl -i -nlpe 's/\x0d//g'"
 
 # for web service
-abbr -a myip "curl https://ifconfig.me && echo"
+abbr -a myip "curl -s https://ipinfo.io/ip; echo"
 abbr -a ipinfo "curl -s https://ipinfo.io/"
 
 # for git 
