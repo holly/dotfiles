@@ -68,6 +68,9 @@ end
 # for docker
 if command -sq docker
     abbr -a d "docker"
+    abbr -a di "docker images"
+    abbr -a dp "docker ps -a"
+    abbr -a dk "docker kill"
     abbr -a drmi "docker images | grep -v REPO | awk '{ print \$3 }' | xargs docker rmi "
 end
 
