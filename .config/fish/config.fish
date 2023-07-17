@@ -71,6 +71,8 @@ if command -sq docker
     abbr -a di "docker images"
     abbr -a dp "docker ps -a"
     abbr -a dk "docker kill"
+    abbr -a dup "docker compose up"
+    abbr -a dwn "docker compose down"
     abbr -a drmi "docker images | grep -v REPO | awk '{ print \$3 }' | xargs docker rmi "
 end
 
