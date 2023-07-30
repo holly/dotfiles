@@ -72,6 +72,7 @@ if command -sq docker
     abbr -a dcd "docker compose down"
     abbr -a dcb "docker compose build"
     abbr -a drmi "docker images | grep -v REPO | awk '{ print \$3 }' | xargs docker rmi "
+    abbr -a dprune "docker system prune -a --volumes"
 end
 
 # for git 
