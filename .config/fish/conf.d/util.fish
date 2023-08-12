@@ -174,6 +174,15 @@ function s2w
 end
 
 ####################
+# aws cli
+####################
+function lambda_invoke
+
+    set -l fname $argv[1]
+    aws lambda invoke --function-name $fname --log-type Tail $PWD/lambda_invoke.txt  --query 'LogResult' | tr -d '"' | base64 -d
+end
+
+####################
 # override
 ####################
 function apt
