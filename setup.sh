@@ -113,7 +113,7 @@ fi
 eval "$(pyenv init -)"
 if [[ ! -d "$PYENV_ROOT/versions/$PYTHON_VERSION" ]]; then
     pyenv install --verbose $PYTHON_VERSION
-    if [[ $? -eq 0 ]]; then
+    if [[ $? -ne 0 ]]; then
         echo "python $PYTHON_VERSION install is failed."
         exit 1
     fi
