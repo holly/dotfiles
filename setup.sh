@@ -16,7 +16,7 @@ if [[ -z "$PYTHON_VERSION" ]]; then
     PYTHON_VERSION=3.11.4
 fi
 if [[ -z "$GLOW_VERSION" ]]; then
-    GLOW_VERSION=1.5.0
+    GLOW_VERSION=1.6.6
 fi
 GLOW_DOWNLOAD_URL="https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_${GLOW_VERSION}_Linux_x86_64.tar.gz"
 
