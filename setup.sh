@@ -17,12 +17,12 @@ if [[ -z "$PYTHON_VERSION" ]]; then
     PYTHON_VERSION=3.12.0b1
 fi
 if [[ -z "$GLOW_VERSION" ]]; then
-    GLOW_VERSION=1.5.0
+    GLOW_VERSION=1.5.1
 fi
 GLOW_DOWNLOAD_URL="https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_${GLOW_VERSION}_Linux_x86_64.tar.gz"
 
 if [[ -z "$TF_VERSION" ]]; then
-    TF_VERSION=1.5.2
+    TF_VERSION=1.6.6
 fi
 if [[ -z "$GO_VERSION" ]]; then
     GO_VERSION=1.21.6
@@ -126,7 +126,7 @@ fi
 eval "$(pyenv init -)"
 if [[ ! -d "$PYENV_ROOT/versions/$PYTHON_VERSION" ]]; then
     pyenv install --verbose $PYTHON_VERSION
-    if [[ $? -eq 0 ]]; then
+    if [[ $? -ne 0 ]]; then
         echo "python $PYTHON_VERSION install is failed."
         exit 1
     fi
@@ -188,7 +188,7 @@ done
 # install docker compose
 DOCKER_CONFIG=$HOME/.docker
 mkdir -p "$DOCKER_CONFIG/cli-plugins"
-curl -SL https://github.com/docker/compose/releases/download/v2.4.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+curl -SL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 
 # symlink start fish_logo display
