@@ -11,9 +11,10 @@ LOCAL_INSTALL_DIR="$HOME/.local/bin"
 PYENV_REPO=https://github.com/pyenv/pyenv.git
 PYENV_VIRTUALENV_REPO=https://github.com/yyuu/pyenv-virtualenv.git
 TFENV_REPO=https://github.com/tfutils/tfenv.git
+GOENV_REPO=https://github.com/syndbg/goenv.git
 
 if [[ -z "$PYTHON_VERSION" ]]; then
-    PYTHON_VERSION=3.11.4
+    PYTHON_VERSION=3.12.0b1
 fi
 if [[ -z "$GLOW_VERSION" ]]; then
     GLOW_VERSION=1.5.0
@@ -23,7 +24,9 @@ GLOW_DOWNLOAD_URL="https://github.com/charmbracelet/glow/releases/download/v${GL
 if [[ -z "$TF_VERSION" ]]; then
     TF_VERSION=1.5.2
 fi
-
+if [[ -z "$GO_VERSION" ]]; then
+    GO_VERSION=1.21.6
+fi
 
 warn() {
     echo -ne "\e[33;1m"
@@ -103,10 +106,20 @@ fi
 export TFENV_ROOT="$HOME/.tfenv"
 export PATH="$PATH:$TFENV_ROOT/bin"
 if [[ -d $TFENV_ROOT ]]; then
-    (cd $TFNV_ROOT; git pull origin $(git rev-parse --abbrev-ref HEAD))
+    (cd $TFENV_ROOT; git pull origin $(git rev-parse --abbrev-ref HEAD))
 else
     git clone $TFENV_REPO $TFENV_ROOT
 fi
+
+# goenv install
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$PATH:$GOENV_ROOT/bin"
+if [[ -d $GOENV_ROOT ]]; then
+    (cd $GOENV_ROOT; git pull origin $(git rev-parse --abbrev-ref HEAD))
+else
+    git clone $GOENV_REPO $GOENV_ROOT
+fi
+
 
 
 # install python
@@ -145,6 +158,10 @@ $HOME/.fzf/install --all
 # install terraform
 tfenv install latest
 tfenv use latest
+
+# install go
+eval "$(goenv init -)"
+goenv install $GO_VERSION
 
 # install vim-plug
 curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

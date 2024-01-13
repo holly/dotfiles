@@ -49,6 +49,16 @@ if test -d "$HOME/.tfenv"
     abbr -a tfd "terraform destroy"
 end
 
+# for goenv
+if test -d "$HOME/.goenv"
+    set -x GOENV_ROOT $HOME/.goenv
+    fish_add_path $GOENV_ROOT/bin
+    $GOENV_ROOT/bin/goenv init - | source
+end
+
+
+
+
 # for tmux
 if command -sq tmux
     abbr -a t "tmux -u"
