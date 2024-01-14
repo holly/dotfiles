@@ -65,11 +65,11 @@ if command -sq tmux
     abbr -a ta "tmux attach"
 end
 
-# for exa
-if command -sq exa
-    abbr -a ls "exa --icons"
-    abbr -a lt 'exa -T -L 3 -a -I ".git|.cache|.terraform" --icons'
-    abbr -a ltl 'exa -T -L 3 -a -I ".git|.cache|.terraform" -l --icons'
+# for eza
+if command -sq eza
+    abbr -a ls "eza --icons -al"
+    abbr -a lt 'eza -T -L 3 -a -I ".git|.cache|.terraform" --icons'
+    abbr -a ltl 'eza -T -L 3 -a -I ".git|.cache|.terraform" -l --icons'
 end
 
 # for docker

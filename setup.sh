@@ -21,6 +21,11 @@ if [[ -z "$GLOW_VERSION" ]]; then
 fi
 GLOW_DOWNLOAD_URL="https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_${GLOW_VERSION}_Linux_x86_64.tar.gz"
 
+if [[ -z "$EZA_VERSION" ]]; then
+    EZA_VERSION=0.17.1
+fi
+EZA_DOWNLOAD_URL="https://github.com/eza-community/eza/releases/download/v${EZA_VERSION}/eza_x86_64-unknown-linux-gnu.tar.gz"
+
 if [[ -z "$TF_VERSION" ]]; then
     TF_VERSION=1.6.6
 fi
@@ -147,6 +152,10 @@ fi
 
 # install glow
 curl -sfL $GLOW_DOWNLOAD_URL | tar -C $LOCAL_INSTALL_DIR -xzf - glow
+
+# install eza
+curl -sfL $EZA_DOWNLOAD_URL | tar -C $LOCAL_INSTALL_DIR -xzf - eza
+
 
 # install fzf
 if [[ -d "$HOME/.fzf" ]]; then
