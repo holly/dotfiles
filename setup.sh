@@ -13,6 +13,8 @@ PYENV_VIRTUALENV_REPO=https://github.com/yyuu/pyenv-virtualenv.git
 TFENV_REPO=https://github.com/tfutils/tfenv.git
 GOENV_REPO=https://github.com/syndbg/goenv.git
 
+VOLTA_INSTALL_SHELL=https://get.volta.sh
+
 if [[ -z "$PYTHON_VERSION" ]]; then
     PYTHON_VERSION=3.12.1
 fi
@@ -125,6 +127,9 @@ else
     git clone $GOENV_REPO $GOENV_ROOT
 fi
 
+# volta install
+curl -sfL $VOLTA_INSTALL_SHELL | bash 
+export PATH="$PATH:$HOME/.volta/bin"
 
 
 # install python
@@ -172,6 +177,9 @@ tfenv use latest
 eval "$(goenv init -)"
 goenv install $GO_VERSION
 goenv local $GO_VERSION
+
+# install node
+volta install node
 
 # install vim-plug
 curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

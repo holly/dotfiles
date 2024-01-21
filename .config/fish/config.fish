@@ -56,7 +56,11 @@ if test -d "$HOME/.goenv"
     $GOENV_ROOT/bin/goenv init - | source
 end
 
-
+# for volta
+if test -d "$HOME/.volta"
+    set -x VOLTA_ROOT $HOME/.volta
+    fish_add_path $VOLTA_ROOT/bin
+end
 
 
 # for tmux
