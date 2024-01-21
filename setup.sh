@@ -3,8 +3,10 @@
 set -o pipefail
 set -C
 
+export TMPDIR=/tmp
+
 REPOSITORY_URL=https://github.com/holly/dotfiles.git
-DEPENDENCY_COMMANDS=(fish batcat nvim aws terraform ansible glow fzf rg duf)
+DEPENDENCY_COMMANDS=(fish nvim aws)
 LOCAL_DOTFILES="$HOME/.dotfiles"
 LOCAL_INSTALL_DIR="$HOME/.local/bin"
 
@@ -27,6 +29,11 @@ if [[ -z "$EZA_VERSION" ]]; then
     EZA_VERSION=0.17.1
 fi
 EZA_DOWNLOAD_URL="https://github.com/eza-community/eza/releases/download/v${EZA_VERSION}/eza_x86_64-unknown-linux-gnu.tar.gz"
+
+if [[ -z "$BAT_VERSION" ]]; then
+    BAT_VERSION=0.24.0
+fi
+BAT_DOWNLOAD_URL="https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v${BAT_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
 
 if [[ -z "$TF_VERSION" ]]; then
     TF_VERSION=1.6.6
@@ -161,6 +168,9 @@ curl -sfL $GLOW_DOWNLOAD_URL | tar -C $LOCAL_INSTALL_DIR -xzf - glow
 # install eza
 curl -sfL $EZA_DOWNLOAD_URL | tar -C $LOCAL_INSTALL_DIR -xzf - eza
 
+# install bat
+curl -sfL $BAT_DOWNLOAD_URL | tar -C $TMPDIR - bat-v${BAT_VERSION}-x86_64-unknown-linux-gnu/bat
+mv $TMPDIR/bat-v${BAT_VERSION}-x86_64-unknown-linux-gnu/bat $LOCAL_INSTALL_DIR/bat
 
 # install fzf
 if [[ -d "$HOME/.fzf" ]]; then
