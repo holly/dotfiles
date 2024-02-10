@@ -56,8 +56,9 @@ if test -d "$HOME/.goenv"
     $GOENV_ROOT/bin/goenv init - | source
 end
 if test -d "$HOME/go"
-    set GO_ROOT $HOME/go
-    fish_add_path $GO_ROOT/bin
+    set -x GOROOT $HOME/go
+    set -x GOPATH $HOME/go
+    fish_add_path $GOPATH/bin
 end
 
 # for volta
