@@ -39,8 +39,9 @@ if [[ -z "$TF_VERSION" ]]; then
     TF_VERSION=1.6.6
 fi
 if [[ -z "$GO_VERSION" ]]; then
-    GO_VERSION=1.21.6
+    GO_VERSION=1.22.0
 fi
+GO_DOWNLOAD_URL=https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 
 warn() {
     echo -ne "\e[33;1m"
@@ -126,13 +127,13 @@ else
 fi
 
 # goenv install
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$PATH:$GOENV_ROOT/bin"
-if [[ -d $GOENV_ROOT ]]; then
-    (cd $GOENV_ROOT; git pull origin $(git rev-parse --abbrev-ref HEAD))
-else
-    git clone $GOENV_REPO $GOENV_ROOT
-fi
+#export GOENV_ROOT="$HOME/.goenv"
+#export PATH="$PATH:$GOENV_ROOT/bin"
+#if [[ -d $GOENV_ROOT ]]; then
+#    (cd $GOENV_ROOT; git pull origin $(git rev-parse --abbrev-ref HEAD))
+#else
+#    git clone $GOENV_REPO $GOENV_ROOT
+#fi
 
 # volta install
 curl -sfL $VOLTA_INSTALL_SHELL | bash 
@@ -184,9 +185,10 @@ tfenv install latest
 tfenv use latest
 
 # install go
-eval "$(goenv init -)"
-goenv install $GO_VERSION
-goenv local $GO_VERSION
+#eval "$(goenv init -)"
+#goenv install $GO_VERSION
+#goenv local $GO_VERSION
+curl -sfL $GO_DOWNLOAD_URL | tar -C $HOME -xzf - go
 
 # install node
 volta install node
