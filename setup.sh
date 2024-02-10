@@ -189,6 +189,7 @@ tfenv use latest
 #goenv install $GO_VERSION
 #goenv local $GO_VERSION
 curl -sfL $GO_DOWNLOAD_URL | tar -C $HOME -xzf - go
+ln -sf $HOME/go/bin/go $LOCAL_INSTALL_DIR/go
 
 # install node
 volta install node

@@ -57,7 +57,6 @@ if test -d "$HOME/.goenv"
 end
 if test -d "$HOME/go"
     set -x GOPATH $HOME/go
-    fish_add_path $GOPATH/bin
 end
 
 # for volta
