@@ -117,9 +117,6 @@ abbr -a dl "curl -sfSL -XGET -O"
 abbr -a post "curl -sfSL -XPOST"
 abbr -a put "curl -sfSL -XPUT"
 
-# for curl3
-abbr -a curl3 "docker run --rm --mount type=bind,src=$SRC,dst=$DST -it $TAG:latest"
-
 # for nvim
 abbr -a vi nvim
 abbr -a view "nvim -R"
