@@ -92,6 +92,11 @@ if command -sq docker
     abbr -a dprune "docker system prune -a --volumes"
 end
 
+# for cli by docker build
+if command -sq docker
+    abbr -a curl3 "docker run --rm  -it $USER/curl3:latest"
+end
+
 # for git 
 abbr -a g  "git"
 abbr -a ga "git add . && git add -u && git status"
@@ -111,7 +116,9 @@ abbr -a get "curl -sfSL -XGET"
 abbr -a dl "curl -sfSL -XGET -O"
 abbr -a post "curl -sfSL -XPOST"
 abbr -a put "curl -sfSL -XPUT"
-abbr -a cw "curl -sfSL -o /dev/null -w '%{json}'"
+
+# for curl3
+abbr -a curl3 "docker run --rm --mount type=bind,src=$SRC,dst=$DST -it $TAG:latest"
 
 # for nvim
 abbr -a vi nvim
