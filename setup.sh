@@ -144,10 +144,10 @@ export PATH="$PATH:$HOME/.volta/bin"
 eval "$(pyenv init -)"
 if [[ ! -d "$PYENV_ROOT/versions/$PYTHON_VERSION" ]]; then
     pyenv install --verbose $PYTHON_VERSION
-    if [[ $? -ne 0 ]]; then
-        echo "python $PYTHON_VERSION install is failed."
-        exit 1
-    fi
+    #if [[ $? -ne 0 ]]; then
+    #    echo "python $PYTHON_VERSION install is failed."
+    #    exit 1
+    #fi
 fi
 pyenv local $PYTHON_VERSION
 
