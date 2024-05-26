@@ -18,7 +18,7 @@ GOENV_REPO=https://github.com/syndbg/goenv.git
 VOLTA_INSTALL_SHELL=https://get.volta.sh
 
 if [[ -z "$PYTHON_VERSION" ]]; then
-    PYTHON_VERSION=3.12.1
+    PYTHON_VERSION=3.12.3
 fi
 if [[ -z "$GLOW_VERSION" ]]; then
     GLOW_VERSION=1.5.1
@@ -26,7 +26,7 @@ fi
 GLOW_DOWNLOAD_URL="https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_${GLOW_VERSION}_Linux_x86_64.tar.gz"
 
 if [[ -z "$EZA_VERSION" ]]; then
-    EZA_VERSION=0.17.1
+    EZA_VERSION=0.18.16
 fi
 EZA_DOWNLOAD_URL="https://github.com/eza-community/eza/releases/download/v${EZA_VERSION}/eza_x86_64-unknown-linux-gnu.tar.gz"
 
@@ -36,10 +36,10 @@ fi
 BAT_DOWNLOAD_URL="https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v${BAT_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
 
 if [[ -z "$TF_VERSION" ]]; then
-    TF_VERSION=1.6.6
+    TF_VERSION=1.8.4
 fi
 if [[ -z "$GO_VERSION" ]]; then
-    GO_VERSION=1.22.0
+    GO_VERSION=1.22.3
 fi
 GO_DOWNLOAD_URL=https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 
