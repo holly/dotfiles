@@ -23,7 +23,7 @@ fi
 if [[ -z "$GLOW_VERSION" ]]; then
     GLOW_VERSION=1.5.1
 fi
-GLOW_DOWNLOAD_URL="https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_${GLOW_VERSION}_Linux_x86_64.tar.gz"
+GLOW_DOWNLOAD_URL="https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_Linux_x86_64.tar.gz
 
 if [[ -z "$EZA_VERSION" ]]; then
     EZA_VERSION=0.18.16
@@ -33,7 +33,7 @@ EZA_DOWNLOAD_URL="https://github.com/eza-community/eza/releases/download/v${EZA_
 if [[ -z "$BAT_VERSION" ]]; then
     BAT_VERSION=0.24.0
 fi
-BAT_DOWNLOAD_URL="https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v${BAT_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+BAT_DOWNLOAD_URL="https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat-v${BAT_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
 
 if [[ -z "$TF_VERSION" ]]; then
     TF_VERSION=1.8.4
@@ -164,13 +164,13 @@ if [[ -n "$BATCAT" ]]; then
 fi
 
 # install glow
-curl -sfL $GLOW_DOWNLOAD_URL | tar -C $LOCAL_INSTALL_DIR -xzf - glow
+curl -sfL $GLOW_DOWNLOAD_URL | tar -C $LOCAL_INSTALL_DIR -xvzf - glow
 
 # install eza
-curl -sfL $EZA_DOWNLOAD_URL | tar -C $LOCAL_INSTALL_DIR -xzf - eza
+curl -sfL $EZA_DOWNLOAD_URL | tar -C $LOCAL_INSTALL_DIR -xvzf - ./eza
 
 # install bat
-curl -sfL $BAT_DOWNLOAD_URL | tar -C $TMPDIR - bat-v${BAT_VERSION}-x86_64-unknown-linux-gnu/bat
+curl -sfL $BAT_DOWNLOAD_URL | tar -C $TMPDIR -xvzf - bat-v${BAT_VERSION}-x86_64-unknown-linux-gnu/bat
 mv $TMPDIR/bat-v${BAT_VERSION}-x86_64-unknown-linux-gnu/bat $LOCAL_INSTALL_DIR/bat
 
 # install fzf
@@ -205,6 +205,7 @@ fish -c "curl -sfL https://raw.githubusercontent.com/jorgebucaran/fisher/main/fu
 sleep 3
 cat "$LOCAL_DOTFILES/fish_plugins" | while read line; do
     fish -c "fisher install $line"
+    sleep 1
 done
 #cat <<EOL | xargs -I% fish -c "fisher install %"
 #oh-my-fish/theme-bobthefish
@@ -218,9 +219,9 @@ done
 
 # install docker compose
 DOCKER_CONFIG=$HOME/.docker
-mkdir -p "$DOCKER_CONFIG/cli-plugins"
-curl -SL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
-chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+#mkdir -p "$DOCKER_CONFIG/cli-plugins"
+#curl -SL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+#chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 
 # symlink start fish_logo display
 ln -sfv "$LOCAL_DOTFILES/.config/fish/functions/fish_greeting.fish" "$HOME/.config/fish/functions/fish_greeting.fish"
