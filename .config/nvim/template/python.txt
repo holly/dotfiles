@@ -2,3 +2,13 @@
 
 import os
 import sys
+<<<<<<< HEAD
+=======
+
+
+def main():
+    pass
+
+if __name__ == "__main__":
+    main()
+>>>>>>> c6c722221bd45dce080b2c9c8e95a7d4d94e40e8
