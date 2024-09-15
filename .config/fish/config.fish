@@ -22,6 +22,8 @@ set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -gx DOCKER_CONFIG "$HOME/.docker"
 set -gx DOCKER_BUILDKIT 1
 
+set -gx DENO_INSTALL "$HOME/.deno"
+
 ###################################
 # abbr
 ###################################
@@ -65,6 +67,10 @@ if test -d "$HOME/.volta"
     fish_add_path $VOLTA_ROOT/bin
 end
 
+# for deno
+if test -d "$DENO_INSTALL"
+    fish_add_path $DENO_INSTALL/bin
+end
 
 # for tmux
 if command -sq tmux
