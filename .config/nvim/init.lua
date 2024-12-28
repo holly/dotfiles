@@ -164,5 +164,5 @@ api.nvim_set_keymap("n", "<Leader>h", ":History<CR>", { noremap = true, silent =
 api.nvim_set_keymap("n", "<Leader>R", ":Rg<CR>", { noremap = true, silent = true })
 
 -- easy-align keybind
-api.nvim_set_keymap("n", "ga", "<Plugin>(EasyAlign)")
-api.nvim_set_keymap("x", "ga", "<Plugin>(EasyAlign)")
+api.nvim_set_keymap("n", "ga", "<Plugin>(EasyAlign)", { 'nowait': v:true })
+api.nvim_set_keymap("x", "ga", "<Plugin>(EasyAlign)", { 'nowait': v:true })
