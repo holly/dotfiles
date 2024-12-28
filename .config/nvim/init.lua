@@ -74,7 +74,8 @@ end
 local templates = {
     { pattern = "*.sh", path = "~/.config/nvim/template/sh.txt" },
     { pattern = "*.py", path = "~/.config/nvim/template/python.txt" },
-    { pattern = "*.pl", path = "~/.config/nvim/template/perl.txt" }
+    { pattern = "*.pl", path = "~/.config/nvim/template/perl.txt" },
+    { pattern = "*.zig", path = "~/.config/nvim/template/zig.txt" },
 }
 for _, template in ipairs(templates) do
     api.nvim_create_autocmd ("BufNewFile", {
@@ -161,3 +162,7 @@ api.nvim_set_keymap("n", "<Leader>G", ":GFiles?<CR>", { noremap = true, silent =
 api.nvim_set_keymap("n", "<Leader>b", ":Buffers<CR>", { noremap = true, silent = true })
 api.nvim_set_keymap("n", "<Leader>h", ":History<CR>", { noremap = true, silent = true })
 api.nvim_set_keymap("n", "<Leader>R", ":Rg<CR>", { noremap = true, silent = true })
+
+-- easy-align keybind
+api.nvim_set_keymap("n", "ga", "<Plugin>(EasyAlign)")
+api.nvim_set_keymap("x", "ga", "<Plugin>(EasyAlign)")
