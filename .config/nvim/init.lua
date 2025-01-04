@@ -34,15 +34,14 @@ opt.ruler = true
 opt.list = true
 
 
-opt.ambiwidth = "double"
 opt.showmatch = true
 opt.autochdir = true
 opt.cursorline = true
 opt.showtabline = 2
 opt.mouse = nil
 opt.listchars = { tab =">-", trail ="*", nbsp = "+" }
-opt.whichwrap = "b","s","h","l","<",">","[","]","~"
-opt.backspace = 'start', 'eol', 'indent'
+opt.whichwrap = "b,s,h,l,<,>,[,],~"
+opt.backspace = "start,eol,indent"
 opt.syntax = "on"
 opt.filetype = "plugin", "indent","on"
 
@@ -51,6 +50,10 @@ opt.hlsearch = true
 opt.incsearch = true
 
 opt.updatetime = 300
+
+opt.ambiwidth = "double"
+vim.opt.formatoptions:remove('t')
+vim.opt.formatoptions:append('mM')
 
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
