@@ -14,6 +14,8 @@ NVIM_INSTALL_CMD_URL="$GIST_BASE_URL/cd5fdfb0c8e08f48dbaba071b1b58909/raw/nvim_i
 ROOT_INSTALL_CMD_URLS=($AWS_INSTALL_CMD_URL $FISH_INSTALL_CMD_URL $NVIM_INSTALL_CMD_URL)
 
 TOOLS_INSTALL_CMD_URL="$GIST_BASE_URL/fdab4bade1955de90467ce72b586d02d/raw/tools_install.py"
+BW_INSTALL_CMD_URL="$GIST_BASE_URL/e080372da4e8ca9aad7259540acd9077/raw/bitwarden_install.sh"
+USER_INSTALL_CMD_URLS=($TOOLS_INSTALL_CMD_URL $BW_INSTALL_CMD_URL)
 
 {{- if eq .chezmoi.os "linux" }}
 echo "dnf install"
@@ -31,15 +33,16 @@ for url in "${ROOT_INSTALL_CMD_URLS[@]}"; do
     echo ""
 done
 
+for url in "${USER_INSTALL_CMD_URLS[@]}"; do
+    fname=$(basename "$url")
+    install_path="${HOME_LOCAL_DIR}/bin/$fname"
 
-fname=$(basename "$TOOLS_INSTALL_CMD_URL")
-install_path="${HOME_LOCAL_DIR}/bin/$fname"
-
-echo "install $fname from $TOOLS_INSTALL_CMD_URL"
-curl -sfL -o $install_path $TOOLS_INSTALL_CMD_URL
-chmod +x $install_path
-$install_path
-echo ""
+    echo "install $fname from $url"
+    curl -sfL -o $install_path $url
+    chmod +x $install_path
+    $install_path install || :
+    echo ""
+done
 
 echo "install bun"
 curl -fsSL https://bun.sh/install | bash
