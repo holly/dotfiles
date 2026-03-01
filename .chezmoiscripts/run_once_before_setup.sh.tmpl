@@ -17,6 +17,8 @@ TOOLS_INSTALL_CMD_URL="$GIST_BASE_URL/fdab4bade1955de90467ce72b586d02d/raw/tools
 BW_INSTALL_CMD_URL="$GIST_BASE_URL/e080372da4e8ca9aad7259540acd9077/raw/bitwarden_install.sh"
 USER_INSTALL_CMD_URLS=($TOOLS_INSTALL_CMD_URL $BW_INSTALL_CMD_URL)
 
+FISHER_SOURCE_URL="https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish"
+
 {{- if eq .chezmoi.os "linux" }}
 echo "dnf install"
 sudo dnf -y groupinstall "Development Tools"
@@ -52,3 +54,13 @@ echo "install uv"
 curl -LsSf https://astral.sh/uv/install.sh | sh
 echo ""
 
+# install fisher and more plugins
+fish -c "curl -sfL $FISHER_SOURCE_URL | source; sleep 3 && fisher install jorgebucaran/fisher"
+sleep 3
+cat <<EOL | xargs -I% fish -c "fisher install %"
+oh-my-fish/theme-bobthefish
+laughedelic/fish_logo
+jethrokuan/z
+0rax/fish-bd
+jethrokuan/fzf
+EOL
