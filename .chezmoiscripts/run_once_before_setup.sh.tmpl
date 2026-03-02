@@ -46,6 +46,10 @@ for url in "${USER_INSTALL_CMD_URLS[@]}"; do
     echo ""
 done
 
+echo "install claude"
+curl -fsSL https://claude.ai/install.sh | bash
+echo ""
+
 echo "install bun"
 curl -fsSL https://bun.sh/install | bash
 echo ""
