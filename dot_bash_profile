@@ -20,6 +20,6 @@ export EDITOR=nvim
 
 . "$HOME/.local/share/../bin/env"
 
-for dotenv in ~/.dotenv/.env*; do
+for dotenv in ~/.envfiles/*.env; do
     source $dotenv
 done
