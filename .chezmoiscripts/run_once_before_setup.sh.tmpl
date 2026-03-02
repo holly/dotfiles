@@ -22,7 +22,7 @@ FISHER_SOURCE_URL="https://raw.githubusercontent.com/jorgebucaran/fisher/main/fu
 {{- if eq .chezmoi.os "linux" }}
 echo "dnf install"
 sudo dnf -y groupinstall "Development Tools"
-sudo dnf -y install xsel git ca-certificates  epel-release jq
+sudo dnf -y install xsel git ca-certificates  epel-release jq age
 echo ""
 {{- end }}
 
