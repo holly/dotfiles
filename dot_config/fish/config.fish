@@ -61,6 +61,8 @@ end
 # for cli by chezmoi
 if command -sq chezmoi
     abbr -a cz chezmoi
+    abbr -a czcd "chezmoi (chezmoi source-path)"
+    abbr -a czcf "chezmoi edit-config"
 end
 
 # for git 
