@@ -8,6 +8,7 @@ end
 fish_add_path "$HOME/.local/bin"
 
 set -gx LANG ja_JP.UTF-8
+set -gx LESSCHARSET utf-8
 set -gx TZ Asia/Tokyo
 set -gx XDG_DATA_HOME "$HOME/.local/share"
 set -gx EDITOR nvim
