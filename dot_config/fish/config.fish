@@ -58,6 +58,11 @@ if command -sq docker
     abbr -a curl3 "docker run --rm  -it $USER/curl3:latest"
 end
 
+# for cli by chezmoi
+if command -sq chezmoi
+    abbr -a cz chezmoi
+end
+
 # for git 
 abbr -a g  "git"
 abbr -a ga "git add . && git add -u && git status"
@@ -89,3 +94,4 @@ abbr -a df "duf"
 abbr -a comma "printf \"%'d\n\""
 abbr -a delempty "egrep -v '^\$'"
 abbr -a alignlf "perl -i -nlpe 's/\x0d//g'"
+abbr -a vi nvim
