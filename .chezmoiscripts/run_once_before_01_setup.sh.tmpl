@@ -75,7 +75,7 @@ EOL
 
 # install  nvim plugin tools
 
-cat <<EOL | xargs -I% bun add -g %
+cat <<EOL | xargs bun add -g 
 tree-sitter-cli
 pyright
 bash-language-server
