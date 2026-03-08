@@ -1,0 +1,7 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use feature "5:20";
+# use feature qw(bareword_filehandles current_sub evalbytes fc indirect multidimensional say state switch unicode_eval unicode_strings) と同じ)
+
