@@ -22,7 +22,7 @@ FISHER_SOURCE_URL="https://raw.githubusercontent.com/jorgebucaran/fisher/main/fu
 {{- if eq .chezmoi.os "linux" }}
 echo "dnf install"
 sudo dnf -y groupinstall "Development Tools"
-sudo dnf -y install xsel git ca-certificates  epel-release jq age
+sudo dnf -y install xsel git curl ca-certificates  epel-release jq age
 echo ""
 {{- end }}
 
@@ -58,6 +58,10 @@ echo "install uv"
 curl -LsSf https://astral.sh/uv/install.sh | sh
 echo ""
 
+echo "install volta"
+curl https://get.volta.sh | bash   
+echo ""
+
 # install fisher and more plugins
 fish -c "curl -sfL $FISHER_SOURCE_URL | source; sleep 3 && fisher install jorgebucaran/fisher"
 sleep 3
@@ -68,3 +72,13 @@ jethrokuan/z
 0rax/fish-bd
 jethrokuan/fzf
 EOL
+
+# install  nvim plugin tools
+
+cat <<EOL | xargs -I% bun add -g %
+tree-sitter-cli
+pyright
+bash-language-server
+@vtsls/language-server
+EOL
+
