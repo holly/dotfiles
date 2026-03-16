@@ -18,8 +18,6 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export EDITOR=nvim
 
 
-. "$HOME/.local/share/../bin/env"
-
 for dotenv in ~/.envfiles/.env*; do
     source $dotenv
 done
