@@ -26,6 +26,7 @@ sudo dnf -y install epel-release
 sudo dnf -y install xsel git curl ca-certificates jq age
 {{ else if eq .chezmoi.osRelease.idLike "debian" }}
 echo "apt install"
+sudo apt -y update
 sudo apt -y install build-essential git cmake pkg-config autotools-dev autoconf automake libtool clang llvm gdb valgrind git curl jq age
 {{- end }}
 echo ""
