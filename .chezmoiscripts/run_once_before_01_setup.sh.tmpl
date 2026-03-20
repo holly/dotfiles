@@ -23,6 +23,7 @@ FISHER_SOURCE_URL="https://raw.githubusercontent.com/jorgebucaran/fisher/main/fu
 echo "dnf install"
 sudo dnf -y groupinstall "Development Tools"
 sudo dnf -y install epel-release
+sudo dnf -y update
 sudo dnf -y install xsel git curl ca-certificates jq age unzip
 {{ else if eq .chezmoi.osRelease.idLike "debian" }}
 echo "apt install"
