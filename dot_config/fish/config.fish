@@ -23,6 +23,9 @@ set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -gx DOCKER_CONFIG "$HOME/.docker"
 set -gx DOCKER_BUILDKIT 1
 
+if command -sq mise
+    mise activate fish | source
+end
 
 ###################################
 # abbr
