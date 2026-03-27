@@ -19,6 +19,13 @@ To install chezmoi, run the following command:
 # Download and install the latest version
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
 ```
+## bitwarden cli
+
+To install bw
+
+```bash
+sh -c "$(https://gist.githubusercontent.com/holly/e080372da4e8ca9aad7259540acd9077/raw/bitwarden_install.sh)" -- install
+```
 
 ## Initialize
 
