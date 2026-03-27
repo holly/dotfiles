@@ -13,9 +13,9 @@ FISH_INSTALL_CMD_URL="$GIST_BASE_URL/2bd195b9e72b2978d2d3e95102f51fd7/raw/fish_i
 NVIM_INSTALL_CMD_URL="$GIST_BASE_URL/cd5fdfb0c8e08f48dbaba071b1b58909/raw/nvim_install.sh"
 ROOT_INSTALL_CMD_URLS=($AWS_INSTALL_CMD_URL $FISH_INSTALL_CMD_URL $NVIM_INSTALL_CMD_URL)
 
-TOOLS_INSTALL_CMD_URL="$GIST_BASE_URL/fdab4bade1955de90467ce72b586d02d/raw/tools_install.py"
+#TOOLS_INSTALL_CMD_URL="$GIST_BASE_URL/fdab4bade1955de90467ce72b586d02d/raw/tools_install.py"
 BW_INSTALL_CMD_URL="$GIST_BASE_URL/e080372da4e8ca9aad7259540acd9077/raw/bitwarden_install.sh"
-USER_INSTALL_CMD_URLS=($TOOLS_INSTALL_CMD_URL $BW_INSTALL_CMD_URL)
+USER_INSTALL_CMD_URLS=($BW_INSTALL_CMD_URL)
 
 FISHER_SOURCE_URL="https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish"
 
@@ -24,11 +24,17 @@ echo "dnf install"
 sudo dnf -y groupinstall "Development Tools"
 sudo dnf -y install epel-release
 sudo dnf -y update
-sudo dnf -y install xsel git curl ca-certificates jq age unzip libatomic bind-utils
+sudo dnf -y install xsel git curl ca-certificates jq age unzip libatomic bind-utils glibc-langpack-ja ripgrep bat glow fd-find duf ShellCheck
 {{ else if eq .chezmoi.osRelease.idLike "debian" }}
 echo "apt install"
+
+echo for glow install
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+
 sudo apt -y update
-sudo apt -y install build-essential git cmake pkg-config autotools-dev autoconf automake libtool clang llvm gdb valgrind git curl jq age unzip bind9-dnsutils libatomic1
+sudo apt -y install build-essential git cmake pkg-config autotools-dev autoconf automake libtool clang llvm gdb valgrind git curl jq age unzip bind9-dnsutils libatomic1 ripgrep bat glow fd-find duf eza shellcheck
 {{- end }}
 echo ""
 
@@ -51,6 +57,11 @@ for url in "${USER_INSTALL_CMD_URLS[@]}"; do
     $install_path install || :
     echo ""
 done
+
+echo "install shfmt"
+curl -sS https://webi.sh/shfmt | sh
+source ~/.config/envman/PATH.env
+echo ""
 
 echo "install claude"
 curl -fsSL https://claude.ai/install.sh | bash
