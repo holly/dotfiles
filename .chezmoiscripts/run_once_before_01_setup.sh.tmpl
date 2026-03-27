@@ -14,6 +14,8 @@ NVIM_INSTALL_CMD_URL="$GIST_BASE_URL/cd5fdfb0c8e08f48dbaba071b1b58909/raw/nvim_i
 ROOT_INSTALL_CMD_URLS=($AWS_INSTALL_CMD_URL $FISH_INSTALL_CMD_URL $NVIM_INSTALL_CMD_URL)
 
 SHFMT_INSTALL_CMD_URL="$GIST_BASE_URL/933f4e9594fc3ee67a8cb8eadfb3077e/raw/shfmt_install.sh"
+LUALS_INSTALL_CMD_URL="$GIST_BASE_URL/314462ec66ef55605d466006a82507c7/raw/luals_install.sh"
+USER_INSTALL_CMD_URLS=($SHFMT_INSTALL_CMD_URL $LUALS_INSTALL_CMD_URL)
 
 FISHER_SOURCE_URL="https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish"
 
@@ -44,6 +46,13 @@ for url in "${ROOT_INSTALL_CMD_URLS[@]}"; do
 
     echo "install $fname from $url"
     sudo bash -c "curl -sfL -o $install_path $url; chmod +x $install_path; $install_path install; :"
+    echo ""
+done
+
+for url in "${USER_INSTALL_CMD_URLS[@]}"; do
+
+    echo "install from $url"
+    curl -sfL $url | bash
     echo ""
 done
 
