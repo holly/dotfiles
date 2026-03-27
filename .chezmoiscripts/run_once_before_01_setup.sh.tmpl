@@ -8,39 +8,41 @@ set -C
 LOCAL_DIR=/usr/local
 HOME_LOCAL_DIR=$HOME/.local
 GIST_BASE_URL="https://gist.githubusercontent.com/holly/"
-AWS_INSTALL_CMD_URL="$GIST_BASE_URL/7ed983b00af2c6c8df8a8c49449bbc35/raw/aws_install_ctrl.sh"
-FISH_INSTALL_CMD_URL="$GIST_BASE_URL/2bd195b9e72b2978d2d3e95102f51fd7/raw/fish_install.sh"
-NVIM_INSTALL_CMD_URL="$GIST_BASE_URL/cd5fdfb0c8e08f48dbaba071b1b58909/raw/nvim_install.sh"
-ROOT_INSTALL_CMD_URLS=($AWS_INSTALL_CMD_URL $FISH_INSTALL_CMD_URL $NVIM_INSTALL_CMD_URL)
+AWS_INSTALL_URL="$GIST_BASE_URL/7ed983b00af2c6c8df8a8c49449bbc35/raw/aws_install_ctrl.sh"
+FISH_INSTALL_URL="$GIST_BASE_URL/2bd195b9e72b2978d2d3e95102f51fd7/raw/fish_install.sh"
+NVIM_INSTALL_URL="$GIST_BASE_URL/cd5fdfb0c8e08f48dbaba071b1b58909/raw/nvim_install.sh"
+ROOT_INSTALL_URLS=($AWS_INSTALL_URL $FISH_INSTALL_URL $NVIM_INSTALL_URL)
 
-SHFMT_INSTALL_CMD_URL="$GIST_BASE_URL/933f4e9594fc3ee67a8cb8eadfb3077e/raw/shfmt_install.sh"
-LUALS_INSTALL_CMD_URL="$GIST_BASE_URL/314462ec66ef55605d466006a82507c7/raw/luals_install.sh"
-USER_INSTALL_CMD_URLS=($SHFMT_INSTALL_CMD_URL $LUALS_INSTALL_CMD_URL)
+SHFMT_INSTALL_URL="$GIST_BASE_URL/933f4e9594fc3ee67a8cb8eadfb3077e/raw/shfmt_install.sh"
+LUALS_INSTALL_URL="$GIST_BASE_URL/314462ec66ef55605d466006a82507c7/raw/luals_install.sh"
+EZA_INSTALL_URL="$GIST_BASE_URL/78952cb28e7afa9b4dcc4d70b878a142/raw/eza_install.sh"
+USER_INSTALL_URLS=($SHFMT_INSTALL_URL $LUALS_INSTALL_URL)
 
 FISHER_SOURCE_URL="https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish"
 
 {{- if eq .chezmoi.osRelease.idLike "rhel centos fedora" }}
+
 echo "dnf install"
 sudo dnf -y groupinstall "Development Tools"
 sudo dnf -y install epel-release
 sudo dnf -y update
-sudo dnf -y install xsel git curl ca-certificates jq age unzip libatomic bind-utils glibc-langpack-ja ripgrep bat glow fd-find duf ShellCheck
-{{ else if eq .chezmoi.osRelease.idLike "debian" }}
-echo "apt install"
+sudo dnf -y install xsel git curl ca-certificates jq age unzip libatomic bind-utils glibc-langpack-ja ripgrep bat glow fd-find duf ShellCheck cargo
+USER_INSTALL_URLS+=($EZA_INSTALL_URL)
 
-echo for glow install
+{{ else if eq .chezmoi.osRelease.idLike "debian" }}
+
+echo "apt install"
+echo "for glow install"
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
 echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
 
-# eza install
-
 sudo apt -y update
-sudo apt -y install xsel build-essential git cmake pkg-config autotools-dev autoconf automake libtool clang llvm gdb valgrind git curl jq age unzip bind9-dnsutils libatomic1 ripgrep bat glow fd-find duf eza shellcheck 
+sudo apt -y install xsel build-essential git cmake pkg-config autotools-dev autoconf automake libtool clang llvm gdb valgrind git curl jq age unzip bind9-dnsutils libatomic1 ripgrep bat glow fd-find duf eza shellcheck cargo
 {{- end }}
 echo ""
 
-for url in "${ROOT_INSTALL_CMD_URLS[@]}"; do
+for url in "${ROOT_INSTALL_URLS[@]}"; do
     fname=$(basename "$url")
     install_path="${LOCAL_DIR}/bin/$fname"
 
@@ -49,7 +51,7 @@ for url in "${ROOT_INSTALL_CMD_URLS[@]}"; do
     echo ""
 done
 
-for url in "${USER_INSTALL_CMD_URLS[@]}"; do
+for url in "${USER_INSTALL_URLS[@]}"; do
 
     echo "install from $url"
     curl -sfL $url | bash
@@ -58,7 +60,7 @@ done
 
 # install shfmt
 echo "install shfmt cli"
-bash -c "$(curl -sSfL $SHFMT_INSTALL_CMD_URL)" 
+bash -c "$(curl -sSfL $SHFMT_INSTALL_URL)" 
 echo
 
 echo "install claude"
@@ -73,13 +75,17 @@ echo "install uv"
 curl -LsSf https://astral.sh/uv/install.sh | sh
 echo ""
 
-echo "install volta"
-curl https://get.volta.sh | bash   
-echo ""
-
 echo "install node by volta"
 PATH="$PATH:$HOME/.volta/bin"
 volta install node@latest
+echo ""
+
+echo "install mise"
+curl https://mise.run | sh
+echo ""
+
+echo "install node by mise"
+mise use -g node@latest
 echo ""
 
 # install fisher and more plugins
