@@ -103,3 +103,4 @@ abbr -a comma "printf \"%'d\n\""
 abbr -a delempty "egrep -v '^\$'"
 abbr -a alignlf "perl -i -nlpe 's/\x0d//g'"
 abbr -a vi nvim
+abbr -a reload ". ~/.config/fish/config.fish"
