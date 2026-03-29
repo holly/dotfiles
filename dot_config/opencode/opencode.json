@@ -1,0 +1,43 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md"],
+  "provider": {
+    "sakura": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "sakura aipf",
+      "options": {
+        "baseURL": "https://api.ai.sakura.ad.jp/v1"
+      },
+      "models": {
+        "Qwen3-Coder-480B-A35B-Instruct-FP8": {
+          "name": "Qwen3-Coder-480B"
+        }
+      }
+    }
+  },
+  "tui": {
+    "scroll_speed": 1,
+    "scroll_acceleration": {
+      "enabled": true
+    },
+    "diff_style": "auto"
+  },
+  "permission": {
+    "bash": {
+      "*": "allow",
+      "rm -rf *": "deny",
+      "git push --force*": "deny",
+      "sudo *": "deny",
+      "dd *": "deny",
+      "mkfs*": "deny",
+      "format*": "deny",
+      "rsync *": "deny"
+    }
+  },
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
+    }
+  }
+}
