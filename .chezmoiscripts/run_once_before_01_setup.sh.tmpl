@@ -62,6 +62,13 @@ docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 echo ""
 
+# add docker group
+RES=$(id $USER | grep docker || :)
+if [[ -z $RES ]]; then
+    echo "add docker group"
+    sudo usermod -aG docker $USER
+fi
+
 for url in "${ROOT_INSTALL_URLS[@]}"; do
     fname=$(basename "$url")
     install_path="${LOCAL_DIR}/bin/$fname"
