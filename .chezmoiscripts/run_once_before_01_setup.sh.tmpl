@@ -23,23 +23,43 @@ FISHER_SOURCE_URL="https://raw.githubusercontent.com/jorgebucaran/fisher/main/fu
 {{- if eq .chezmoi.osRelease.idLike "rhel centos fedora" }}
 
 echo "dnf install"
+sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo dnf -y groupinstall "Development Tools"
 sudo dnf -y install epel-release
 sudo dnf -y update
-sudo dnf -y install xsel git curl ca-certificates jq age unzip libatomic bind-utils glibc-langpack-ja ripgrep bat glow fd-find duf ShellCheck cargo
+sudo dnf -y install xsel git curl ca-certificates jq unzip libatomic bind-utils glibc-langpack-ja \
+age ripgrep bat glow fd-find duf ShellCheck cargo \
+docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 USER_INSTALL_URLS+=($EZA_INSTALL_URL)
 
 {{ else if eq .chezmoi.osRelease.idLike "debian" }}
 
 echo "apt install"
+sudo install -m 0755 -d /etc/apt/keyrings
+
 echo "for glow install"
-sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
 echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
 
+echo "for docker install"
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
 sudo apt -y update
-sudo apt -y install xsel build-essential git cmake pkg-config autotools-dev autoconf automake libtool clang llvm gdb valgrind git curl jq age unzip bind9-dnsutils language-pack-ja-base language-pack-ja libatomic1 ripgrep bat glow fd-find duf eza shellcheck cargo
+sudo apt -y install xsel build-essential git cmake pkg-config autotools-dev autoconf automake libtool clang llvm gdb valgrind git curl jq unzip bind9-dnsutils language-pack-ja-base language-pack-ja libatomic1 \
+age ripgrep bat glow fd-find duf eza shellcheck cargo \
+docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 {{- end }}
+
 echo ""
 
 for url in "${ROOT_INSTALL_URLS[@]}"; do
