@@ -21,17 +21,40 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
 ```
 ## bitwarden cli
 
-To install bw
+### install
 
 ```bash
 sh -c "$(https://gist.githubusercontent.com/holly/e080372da4e8ca9aad7259540acd9077/raw/bitwarden_install.sh)" -- install
+```
+
+### login
+
+```bash
+# normal login
+bw login
+
+# login by apikey
+bw login --apikey
+```
+
+### unlock
+
+#### bash, zsh
+
+```bash
+export BW_SESSION=$(bw unlock --raw)
+```
+#### fish
+
+```fish
+set -x BW_SESSION (bw unlock --raw)
 ```
 
 ## Initialize
 
 ```bash
 # clone this repository, initialize and appy the settings
-chezmoi init --apply $GITHUB_USERNAME
+chezmoi init --apply $GITHUB_USER
 ```
 
 ## Managed Configuration Files
