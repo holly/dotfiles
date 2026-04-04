@@ -90,6 +90,10 @@ echo "install shfmt cli"
 bash -c "$(curl -sSfL $SHFMT_INSTALL_URL)" 
 echo
 
+
+# install zls
+
+
 echo "install claude"
 curl -fsSL https://claude.ai/install.sh | bash
 echo ""
@@ -109,6 +113,18 @@ echo ""
 echo "install node by mise"
 mise use -g node@latest
 echo ""
+
+# install zvm
+echo "install zvm"
+curl https://www.zvm.app/install.sh | bash
+echo ""
+
+echo "install zig by zvm"
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
+zvm install master
+zvm use master
 
 # install fisher and more plugins
 fish -c "curl -sfL $FISHER_SOURCE_URL | source; sleep 3 && fisher install jorgebucaran/fisher"

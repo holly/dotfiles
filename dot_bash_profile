@@ -20,9 +20,13 @@ eval "$(mise activate bash)"
 export MISE_SHIMS_PATH="$HOME/.local/share/mise/shims"
 export PATH="$PATH:$MISE_SHIMS_PATH"
 
+# ZVM
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
+
 # for custom environment variables
 export EDITOR=nvim
-
 
 for dotenv in ~/.envfiles/.env*; do
     source $dotenv
