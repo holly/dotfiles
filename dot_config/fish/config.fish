@@ -82,7 +82,6 @@ abbr -a gpl "git pull origin (git rev-parse --abbrev-ref HEAD)"
 abbr -a gdf 'git diff --word-diff'
 abbr -a gnb 'git switch -c'
 abbr -a gcl 'git clone'
-abbr -a gcz 'git cz'
 
 
 # for web service
