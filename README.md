@@ -53,9 +53,25 @@ set -x BW_SESSION (bw unlock --raw)
 ## Initialize
 
 ```bash
-# clone this repository, initialize and appy the settings
+# clone this repository, initialize and apply the settings
 chezmoi init --apply $GITHUB_USER
 ```
+
+After running the above command, the following processes will be executed automatically:
+
+- OS detection (RHEL/CentOS/Fedora or Debian/Ubuntu)
+- Package installations according to the detected OS:
+  - Development tools
+  - Docker and related packages
+  - Utilities (age, ripgrep, bat, glow, fd-find, duf, shellcheck, etc.)
+- Adding user to docker group
+- Installing various tools:
+  - Root-required tools (AWS CLI, Fish shell, Neovim, etc.)
+  - User-level tools (shfmt, LuaLS, etc.)
+- Installing runtime management tools (Claude CLI, Bun, uv, mise, zvm)
+- Installing Node.js and Zig programming languages
+- Setting up Fish shell plugin manager (Fisher) and plugins
+- Installing Neovim plugin development tools
 
 ## Managed Configuration Files
 
