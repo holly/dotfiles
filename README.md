@@ -4,10 +4,11 @@ This repository is a collection of dotfiles managed using [chezmoi](https://www.
 
 ---
 
-## Prerequisites
+## Prerequire
 
-- [chezmoi](https://www.chezmoi.io/) must be installed.
-- Git must be installed.
+- [chezmoi](https://www.chezmoi.io/)
+- Git
+- [age](https://age-encryption.org/)
 
 ---
 
