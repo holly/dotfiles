@@ -78,8 +78,16 @@ After running the above command, the following processes will be executed automa
 The main configuration files managed in this repository are as follows:
 
 - .vimrc: Vim configuration file
-- .gitconfig: 
-- (Add other files here as needed)
+- .gitconfig: Git global configuration file
+- .bash_profile: Bash profile configuration
+- .czrc: Commitizen configuration file
+- .tmux.conf: Tmux configuration file
+- .ripgreprc: Ripgrep configuration file
+- .ssh/config: SSH client configuration file
+- .env/*: Environment variable files
+- nvim/: Neovim configuration directory
+- fish/: Fish shell configuration directory
+- cz-git/: Commitizen git configuration directory
 
 ## License
 
