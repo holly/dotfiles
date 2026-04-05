@@ -89,6 +89,27 @@ The main configuration files managed in this repository are as follows:
 - fish/: Fish shell configuration directory
 - cz-git/: Commitizen git configuration directory
 
+## Neovim Configuration
+
+This repository includes a comprehensive Neovim configuration with the following plugins and LSP servers:
+
+### Plugins:
+- blink.cmp: Completion engine
+- nvim-treesitter: Syntax highlighting and code parsing
+- telescope.nvim: Fuzzy finder
+- conform.nvim: Code formatter
+- nvim-lualine: Status line
+- mini.align: Alignment tool
+- hlchunk: Visual code block highlighting
+- coderunner: Code execution
+
+### LSP Servers:
+- bashls: Bash/Shell script support
+- pyright: Python language support
+- vtsls: TypeScript/JavaScript language support
+- lua_ls: Lua language support
+- zls: Zig language support
+
 ## License
 
 This repository is provided under the [MIT License](https://opensource.org/license/mit)
