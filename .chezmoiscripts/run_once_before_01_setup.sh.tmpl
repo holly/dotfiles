@@ -126,6 +126,9 @@ export PATH="$PATH:$ZVM_INSTALL/"
 zvm install master
 zvm use master
 
+# install zls
+zvm i --zls master
+
 # install fisher and more plugins
 fish -c "curl -sfL $FISHER_SOURCE_URL | source; sleep 3 && fisher install jorgebucaran/fisher"
 sleep 3
