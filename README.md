@@ -25,7 +25,9 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
 ### install
 
 ```bash
-sh -c "$(https://gist.githubusercontent.com/holly/e080372da4e8ca9aad7259540acd9077/raw/bitwarden_install.sh)" -- install
+curl -fsSL https://bun.sh/install | bash
+PATH="$PATH:$HOME/.bun/bin"
+bun add -g @bitwarden/cli
 ```
 
 ### login
