@@ -53,13 +53,15 @@ if command -sq docker
     abbr -a dcp "docker compose up"
     abbr -a dcd "docker compose down"
     abbr -a dcb "docker compose build"
-    abbr -a drmi "docker images | grep -v REPO | awk '{ print \$3 }' | xargs docker rmi "
+    abbr -a drm "docker ps -a | grep -v REPO | awk '{ print \$1 }' | xargs docker rm "
+    abbr -a drmi "docker images | grep -v ID | awk '{ print \$2 }' | xargs docker rmi "
     abbr -a dprune "docker system prune -a --volumes"
 end
 
 # for cli by docker build
 if command -sq docker
     abbr -a curl3 "docker run --rm  -it $USER/curl3:latest"
+    abbr -a trans "docker run --rm --env-file ~/.config/.env.trans -it $USER/trans:latest"
 end
 
 # for cli by chezmoi
