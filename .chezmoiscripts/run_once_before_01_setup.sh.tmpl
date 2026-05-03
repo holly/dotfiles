@@ -18,6 +18,9 @@ LUALS_INSTALL_URL="$GIST_BASE_URL/314462ec66ef55605d466006a82507c7/raw/luals_ins
 EZA_INSTALL_URL="$GIST_BASE_URL/78952cb28e7afa9b4dcc4d70b878a142/raw/eza_install.sh"
 USER_INSTALL_URLS=($SHFMT_INSTALL_URL $LUALS_INSTALL_URL)
 
+: "${XDG_DATA_HOME:=$HOME/.local/share}"
+BW_SSH_AGENT_REPO=https://github.com/holly/bw-ssh-agent.git
+
 FISHER_SOURCE_URL="https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish"
 
 {{- if eq .chezmoi.osRelease.idLike "rhel centos fedora" }}
@@ -91,7 +94,15 @@ bash -c "$(curl -sSfL $SHFMT_INSTALL_URL)"
 echo
 
 
-# install zls
+# install bw-ssh-agent
+echo "install bw-ssh-agent"
+if [[ -d $XDG_DATA_HOME/bw-ssh-agent ]]; then
+    (cd $XDG_DATA_HOME/bw-ssh-agent; git pull origin main)
+else
+    git clone $BW_SSH_AGENT_REPO $XDG_DATA_HOME/bw-ssh-agent
+    ln -sf $XDG_DATA_HOME/bw-ssh-agent/bw-ssh-agent.py $HOME_LOCAL_DIR/bin/bw-ssh-agent
+fi 
+echo
 
 
 echo "install claude"
