@@ -27,7 +27,7 @@ sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/dock
 sudo dnf -y groupinstall "Development Tools"
 sudo dnf -y install epel-release
 sudo dnf -y update
-sudo dnf -y install xsel git curl ca-certificates jq unzip libatomic bind-utils glibc-langpack-ja \
+sudo dnf -y install tmux xsel git curl ca-certificates jq unzip libatomic bind-utils glibc-langpack-ja \
 age ripgrep bat glow fd-find duf ShellCheck cargo \
 docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 USER_INSTALL_URLS+=($EZA_INSTALL_URL)
@@ -55,7 +55,7 @@ Signed-By: /etc/apt/keyrings/docker.asc
 EOF
 
 sudo apt -y update
-sudo apt -y install xsel build-essential git cmake pkg-config autotools-dev autoconf automake libtool clang llvm gdb valgrind git curl jq unzip bind9-dnsutils language-pack-ja-base language-pack-ja libatomic1 \
+sudo apt -y install tmux xsel build-essential git cmake pkg-config autotools-dev autoconf automake libtool clang llvm gdb valgrind git curl jq unzip bind9-dnsutils language-pack-ja-base language-pack-ja libatomic1 \
 age ripgrep bat glow fd-find duf eza shellcheck cargo \
 docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 {{- end }}
