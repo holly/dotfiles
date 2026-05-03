@@ -20,6 +20,37 @@ To install chezmoi, run the following command:
 # Download and install the latest version
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
 ```
+
+## more packages
+
+### install
+
+#### ubuntu
+```bash
+sudo apt install age unzip libatomic1
+```
+
+#### Rockey, AlmaLinux
+```bash
+sudo dnf install age unzip libatomic
+```
+
+## age settings
+
+[age](https://age-encryption.org/)
+set your private key.
+
+
+```bash
+mkdir ~/.age
+chmod 700 ~/.age
+cat <<EOL >~/.age/key.txt
+# created: 2026-03-15T23:04:01+09:00
+# public key: ageXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+AGE-SECRET-KEY-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+chmod 600 ~/.age/key.txt
+```
+
 ## bitwarden cli
 
 ### install
