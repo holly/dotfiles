@@ -21,7 +21,7 @@ To install chezmoi, run the following command:
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
 ```
 
-## more packages
+## Install packages
 
 ### install
 
@@ -55,9 +55,27 @@ chmod 600 ~/.age/key.txt
 
 ### install
 
+#### bun
+
 ```bash
 curl -fsSL https://bun.sh/install | bash
 PATH="$PATH:$HOME/.bun/bin"
+```
+
+#### mise
+
+```bash
+curl https://mise.run | sh
+eval "$(mise activate bash)"
+export MISE_SHIMS_PATH="$HOME/.local/share/mise/shims"
+PATH="$PATH:$MISE_SHIMS_PATH"
+mise use -g node@latest
+node -v
+```
+
+#### bw
+
+```bash
 bun add -g @bitwarden/cli
 ```
 
