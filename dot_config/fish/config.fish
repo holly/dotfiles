@@ -61,7 +61,7 @@ end
 # for cli by docker build
 if command -sq docker
     abbr -a curl3 "docker run --rm  -it $USER/curl3:latest"
-    abbr -a trans "docker run --rm --env-file ~/.config/.env.trans -it $USER/trans:latest"
+    abbr -a trans "docker run --rm --env-file ~/.config/.env.trans -i $USER/trans:latest"
 end
 
 # for cli by chezmoi
