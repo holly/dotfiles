@@ -1,7 +1,6 @@
 ---
 name: tech-stack
 description: このリポジトリで使用する技術スタック
-tools: []
 ---
 
 # 技術スタック
