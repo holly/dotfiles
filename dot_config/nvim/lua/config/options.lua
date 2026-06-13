@@ -78,6 +78,8 @@ vim.opt.formatoptions:remove('t')
 -- 効果: 日本語の文章を整形する際、単語の間に不要な半角スペースが入るのを防ぎ、日本語に適した自然な改行処理が行われるようになります。
 vim.opt.formatoptions:append('mM')
 
+
+
 --vim.opt.clipboard:append("unnamed")
 
 -- 連想配列の設定を順番に処理
@@ -87,5 +89,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
         for k, v in pairs(options) do
             vim.opt[k] = v
         end
+    end,
+})
+
+-- 0.12系かつnvim-treesitterのmainブランチではNeovim本体のTreesitter機能を開始する形に寄せます
+vim.api.nvim_create_autocmd('FileType', {
+    callback = function()
+        pcall(vim.treesitter.start)
     end,
 })
